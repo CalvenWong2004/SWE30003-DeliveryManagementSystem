@@ -1,0 +1,268 @@
+$ python -m yowd_dms --data evidence/demo_data --demo-time "2026-10-27 08:40"
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 08:40]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: sam@example.com
+  Password: *********
+  [OK] Welcome, Sam Smith (Client).
+
+========================================================================
+ Client menu - Sam Smith
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 3
+
+========================================================================
+ Respond to a quote
+========================================================================
+  ID       Status  Client     From      To        Fee   
+  -------  ------  ---------  --------  --------  ------
+  DR-0001  Quoted  Sam Smith  Hawthorn  Richmond  $25.04
+  Delivery ID: DR-0001
+
+========================================================================
+ Delivery DR-0001  -  Quoted
+========================================================================
+  Client       : Sam Smith
+  Pickup       : 12 John St, Hawthorn VIC 3122
+  Drop-off     : 8 Bridge Rd, Richmond VIC 3121
+  Recipient    : Ravi Patel (0422111222)
+  Service      : Standard
+  Tracking code: EQX5X24E
+  Parcels:
+    P1: Laptop, size M, 2.5 kg - held by Sender at Hawthorn
+    P2: Charger, size S, 0.5 kg - held by Sender at Hawthorn
+  Quote        : $25.04 for 4.2 km; pickup 2026-10-27 09:30, delivery by 2026-10-27 11:38
+                 valid until 2026-10-28 08:20
+  Driver       : not allocated
+  History:
+    2026-10-27 08:00  Requested  by Sam Smith
+    2026-10-27 08:20  Quoted     by Oscar Office - Quoted $25.04
+   A) Accept the quote
+   D) Decline the quote
+  Your answer: A
+   1) Pay online now by card
+   2) Cash on delivery to the driver
+  Payment method: 1
+  [OK] Quote accepted. DR-0001 is waiting for a driver to be allocated.
+  Pay the online amount now? [Y/N]: N
+
+========================================================================
+ Client menu - Sam Smith
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 4
+
+========================================================================
+ Pay for a delivery
+========================================================================
+  ID       Status    Client     From      To        Fee   
+  -------  --------  ---------  --------  --------  ------
+  DR-0001  Accepted  Sam Smith  Hawthorn  Richmond  $25.04
+  Delivery ID: DR-0001
+  Amount due: $25.04 by Online card
+   P) Pay now by card
+   C) Switch to cash on delivery
+  Choose: P
+  [Simulation] Card details are entered on the payment provider's page; the DMS never sees them.
+  [OK] Payment processed (simulated) by Visa. Reference SIM-4AFBC19D.
+
+========================================================================
+ Client menu - Sam Smith
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 08:40]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: chloe@example.com
+  Password: *********
+  [OK] Welcome, Chloe Client (Client).
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 3
+
+========================================================================
+ Respond to a quote
+========================================================================
+  ID       Status  Client        From     To         Fee   
+  -------  ------  ------------  -------  ---------  ------
+  DR-0002  Quoted  Chloe Client  Fitzroy  Southbank  $25.00
+  Delivery ID: DR-0002
+
+========================================================================
+ Delivery DR-0002  -  Quoted
+========================================================================
+  Client       : Chloe Client
+  Pickup       : 100 Smith St, Fitzroy VIC 3065
+  Drop-off     : 20 Clarendon St, Southbank VIC 3006
+  Recipient    : Mei Chen (0433222333)
+  Service      : Express
+  Tracking code: RYGJ5RRE
+  Parcels:
+    P1: Documents, size S, 1 kg - held by Sender at Fitzroy
+  Quote        : $25.00 for 3.8 km; pickup 2026-10-27 10:00, delivery by 2026-10-27 10:38
+                 adjusted from $24.84: Regular client rate agreed by phone
+                 valid until 2026-10-28 08:20
+  Driver       : not allocated
+  History:
+    2026-10-27 08:20  Requested  by Oscar Office
+    2026-10-27 08:20  Quoted     by Oscar Office - Quoted $25.00
+   A) Accept the quote
+   D) Decline the quote
+  Your answer: A
+   1) Pay online now by card
+   2) Cash on delivery to the driver
+  Payment method: 1
+  [OK] Quote accepted. DR-0002 is waiting for a driver to be allocated.
+  Pay the online amount now? [Y/N]: N
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 4
+
+========================================================================
+ Pay for a delivery
+========================================================================
+  ID       Status    Client        From     To         Fee   
+  -------  --------  ------------  -------  ---------  ------
+  DR-0002  Accepted  Chloe Client  Fitzroy  Southbank  $25.00
+  Delivery ID: DR-0002
+  Amount due: $25.00 by Online card
+   P) Pay now by card
+   C) Switch to cash on delivery
+  Choose: C
+  [OK] Payment changed to cash on delivery.
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 2
+
+========================================================================
+ My deliveries
+========================================================================
+  ID       Status    Client        From     To         Fee   
+  -------  --------  ------------  -------  ---------  ------
+  DR-0002  Accepted  Chloe Client  Fitzroy  Southbank  $25.00
+  Delivery ID to view [or Enter to go back] (Enter = none): DR-0002
+
+========================================================================
+ Delivery DR-0002  -  Accepted
+========================================================================
+  Client       : Chloe Client
+  Pickup       : 100 Smith St, Fitzroy VIC 3065
+  Drop-off     : 20 Clarendon St, Southbank VIC 3006
+  Recipient    : Mei Chen (0433222333)
+  Service      : Express
+  Tracking code: RYGJ5RRE
+  Parcels:
+    P1: Documents, size S, 1 kg - held by Sender at Fitzroy
+  Quote        : $25.00 for 3.8 km; pickup 2026-10-27 10:00, delivery by 2026-10-27 10:38
+                 adjusted from $24.84: Regular client rate agreed by phone
+  Payment      : Cash on delivery, $25.00, Due
+  Driver       : not allocated
+  History:
+    2026-10-27 08:20  Requested  by Oscar Office
+    2026-10-27 08:20  Quoted     by Oscar Office - Quoted $25.00
+    2026-10-27 08:40  Accepted   by Chloe Client - Payment by Online card
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 08:40]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 0
+  Goodbye.

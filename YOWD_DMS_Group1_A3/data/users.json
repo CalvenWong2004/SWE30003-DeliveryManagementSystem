@@ -1,0 +1,14 @@
+[
+  {
+    "user_id": "U-0001",
+    "role": "Business Owner",
+    "name": "Calven",
+    "email": "calvenw0318@gmail.com",
+    "phone": "0421913816",
+    "salt": "1cca38ca3816c07fe281f2f6f706394e",
+    "hash": "b481374d45a856d38d7132f9d8ab509816185e1c5a34c5ce7ef8d935f622fd84",
+    "state": "Active",
+    "failed_logins": 0,
+    "locked_until": null
+  }
+]

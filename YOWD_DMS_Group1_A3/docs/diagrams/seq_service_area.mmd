@@ -1,0 +1,22 @@
+sequenceDiagram
+autonumber
+actor C as Client
+participant F as RequestForm
+participant DMS as DeliveryManagementSystem
+participant SA as ServiceArea
+participant DR as DeliveryRegistry
+C->>F: drop-off 1 George St, Sydney 2000
+F->>DMS: checkAddress(address)
+DMS->>SA: check(address)
+SA-->>F: rejected - outside Greater Melbourne
+F-->>C: error, re-enter address
+C->>F: 5 Station St, Box Hill 3128
+F->>DMS: checkAddress(address)
+SA-->>F: accepted
+C->>F: review, then S (submit)
+F->>DMS: requestDelivery(...)
+DMS->>DR: createRequest(...)
+DR->>SA: validate(pickup), validate(drop-off)
+Note over DR,SA: checked again at the registry, so no caller can bypass it
+DR->>DR: new DeliveryRequest (REQUESTED), attach notifier
+DR-->>C: DR-0001 + tracking code

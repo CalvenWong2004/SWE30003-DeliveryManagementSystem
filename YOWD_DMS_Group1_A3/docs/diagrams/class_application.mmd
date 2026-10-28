@@ -1,0 +1,103 @@
+classDiagram
+direction TB
+class DeliveryManagementSystem {
+  <<Singleton / Facade>>
+  -session: User
+  +start(dataDir, clock, gateway)$
+  +login(email, password) User
+  +requestDelivery(...) DeliveryRequest
+  +issueQuote(id, pickup, fee, reason) Quote
+  +respondToQuote(id, accept, method)
+  +payOnline(id) str
+  +allocate(id, staffId)
+  +addAvailability(staffId, start, end)
+  +recordPickup(id)
+  +collectCash(id, amount)
+  +recordHandover(id, receivedBy)
+  +statistics(period, date, staffId)
+  +deactivateStaff(userId) list
+}
+class UserDirectory {
+  +load() / save()
+  +createUser(role, ...) User
+  +authenticate(email, password) User
+  +find(userId) User
+}
+class StaffRoster {
+  +load() / save()
+  +setCommitmentSource(fn)
+  +addAvailability(staffId, start, end)
+  +conflictsIfRemoved(availabilityId) list
+  +isFree(staffId, start, end) bool
+  +availableStaff(start, end) list
+}
+class DeliveryRegistry {
+  +load() / save() / attachObservers()
+  +createRequest(...) DeliveryRequest
+  +suggestQuote(request, pickup) QuoteSuggestion
+  +expireLapsedQuotes() list
+  +search(text) list
+  +findByTracking(code) DeliveryRequest
+  +commitmentsFor(staffId) list
+  +statistics(period, date, staffId) Statistics
+}
+class User {
+  <<abstract>>
+  +userId, name, email, phone
+  +state: AccountState
+  +failedLogins, lockedUntil
+  +verifyPassword(password) bool
+  +can(operation) bool
+  +permittedOperations()*
+}
+class Client
+class OfficeStaff
+class BusinessOwner
+class DeliveryStaff
+class StaffAvailability {
+  +start, end
+  +covers(start, end) bool
+  +overlaps(start, end) bool
+}
+class PricingStrategy {
+  <<abstract>>
+  +suggestFee(request, km)*
+  +deliveryWindow(km)*
+}
+class StandardPricing
+class ExpressPricing
+class ServiceArea {
+  +check(address) AreaCheck
+  +distanceKm(origin, destination) float
+}
+class JsonStore {
+  +load(collection) list
+  +save(collection, records)
+}
+class Clock {
+  +now() datetime
+}
+class DeliveryRequest
+User <|-- Client
+User <|-- OfficeStaff
+OfficeStaff <|-- BusinessOwner
+User <|-- DeliveryStaff
+PricingStrategy <|-- StandardPricing
+PricingStrategy <|-- ExpressPricing
+DeliveryManagementSystem *-- UserDirectory
+DeliveryManagementSystem *-- StaffRoster
+DeliveryManagementSystem *-- DeliveryRegistry
+DeliveryManagementSystem --> Clock
+UserDirectory "1" o-- "*" User
+StaffRoster "1" o-- "*" StaffAvailability
+StaffAvailability "*" --> "1" DeliveryStaff
+StaffRoster --> UserDirectory
+DeliveryRegistry "1" o-- "*" DeliveryRequest
+DeliveryRegistry --> ServiceArea
+DeliveryRegistry --> "2" PricingStrategy
+DeliveryRegistry --> StaffRoster
+DeliveryRequest "*" --> "1" Client : for
+DeliveryRequest "*" --> "0..1" DeliveryStaff : allocated to
+UserDirectory ..> JsonStore
+StaffRoster ..> JsonStore
+DeliveryRegistry ..> JsonStore

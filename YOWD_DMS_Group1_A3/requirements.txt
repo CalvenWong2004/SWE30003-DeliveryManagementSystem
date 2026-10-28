@@ -1,0 +1,12 @@
+# YOWD Delivery Management System - SWE30003 A3, Group 1
+# Requires Python 3.10 or later.
+#
+# The application itself (src/yowd_dms) and the unit tests use only the
+# Python standard library, so nothing is needed just to run the app or tests.
+# The packages below are for the optional checking and evidence tools.
+
+# Coding-standard check: flake8 src
+flake8>=7.0
+
+# Screenshot renderer: python tools/render_screenshots.py
+Pillow>=10.0

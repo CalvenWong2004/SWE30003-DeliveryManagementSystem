@@ -1,0 +1,305 @@
+$ python -m yowd_dms --data evidence/demo_data --demo-time "2026-10-27 09:00"
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 09:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: office@yowd.com.au
+  Password: *********
+  [OK] Welcome, Oscar Office (Office Staff).
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 3
+
+========================================================================
+ Allocate delivery staff
+========================================================================
+  ID       Status    Client        From      To         Fee   
+  -------  --------  ------------  --------  ---------  ------
+  DR-0001  Accepted  Sam Smith     Hawthorn  Richmond   $25.04
+  DR-0002  Accepted  Chloe Client  Fitzroy   Southbank  $25.00
+  Delivery ID: DR-0001
+  Window: 2026-10-27 09:30 to 2026-10-27 11:38
+  ID      Driver       Open deliveries
+  ------  -----------  ---------------
+  U-0003  Dana Driver  0              
+  Driver ID: U-0004
+  [!] Dev Driver is no longer available for that window. Choose another driver.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 3
+
+========================================================================
+ Allocate delivery staff
+========================================================================
+  ID       Status    Client        From      To         Fee   
+  -------  --------  ------------  --------  ---------  ------
+  DR-0001  Accepted  Sam Smith     Hawthorn  Richmond   $25.04
+  DR-0002  Accepted  Chloe Client  Fitzroy   Southbank  $25.00
+  Delivery ID: DR-0001
+  Window: 2026-10-27 09:30 to 2026-10-27 11:38
+  ID      Driver       Open deliveries
+  ------  -----------  ---------------
+  U-0003  Dana Driver  0              
+  Driver ID: U-0003
+  [OK] DR-0001 allocated to Dana Driver.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 3
+
+========================================================================
+ Allocate delivery staff
+========================================================================
+  ID       Status    Client        From     To         Fee   
+  -------  --------  ------------  -------  ---------  ------
+  DR-0002  Accepted  Chloe Client  Fitzroy  Southbank  $25.00
+  Delivery ID: DR-0002
+  Window: 2026-10-27 10:00 to 2026-10-27 10:38
+  (none)
+  [!] No delivery staff are available for this window. Add availability or re-quote a later time.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 4
+
+========================================================================
+ Manage staff availability
+========================================================================
+  ID      Driver       Availability periods
+  ------  -----------  --------------------
+  U-0003  Dana Driver  2                   
+  U-0004  Dev Driver   2                   
+  Driver ID: U-0004
+
+  Availability of Dev Driver:
+  ID       Available                           
+  -------  ------------------------------------
+  AV-0003  2026-10-27 13:00 to 2026-10-27 18:00
+  AV-0004  2026-10-28 13:00 to 2026-10-28 18:00
+  Open deliveries:
+  (none)
+   A) Add a period
+   R) Remove a period
+   B) Back
+  Action: A
+  From [YYYY-MM-DD HH:MM]: 27/10 9am
+  [!] Date/time must be in the form YYYY-MM-DD HH:MM, for example 2026-10-27 09:30.
+  From [YYYY-MM-DD HH:MM]: 2026-10-27 09:00
+  To [YYYY-MM-DD HH:MM]: 2026-10-27 08:00
+  [!] Availability must end after it starts. Please re-enter the period.
+  From [YYYY-MM-DD HH:MM]: 2026-10-27 09:00
+  To [YYYY-MM-DD HH:MM]: 2026-10-27 13:00
+  [OK] Added AV-0005: 2026-10-27 09:00 to 2026-10-27 13:00.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 3
+
+========================================================================
+ Allocate delivery staff
+========================================================================
+  ID       Status    Client        From     To         Fee   
+  -------  --------  ------------  -------  ---------  ------
+  DR-0002  Accepted  Chloe Client  Fitzroy  Southbank  $25.00
+  Delivery ID: DR-0002
+  Window: 2026-10-27 10:00 to 2026-10-27 10:38
+  ID      Driver      Open deliveries
+  ------  ----------  ---------------
+  U-0004  Dev Driver  0              
+  Driver ID: U-0004
+  [OK] DR-0002 allocated to Dev Driver.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 4
+
+========================================================================
+ Manage staff availability
+========================================================================
+  ID      Driver       Availability periods
+  ------  -----------  --------------------
+  U-0003  Dana Driver  2                   
+  U-0004  Dev Driver   3                   
+  Driver ID: U-0003
+
+  Availability of Dana Driver:
+  ID       Available                           
+  -------  ------------------------------------
+  AV-0001  2026-10-27 08:00 to 2026-10-27 18:00
+  AV-0002  2026-10-28 08:00 to 2026-10-28 18:00
+  Open deliveries:
+  ID       Status     Client     From      To        Fee   
+  -------  ---------  ---------  --------  --------  ------
+  DR-0001  Allocated  Sam Smith  Hawthorn  Richmond  $25.04
+   A) Add a period
+   R) Remove a period
+   B) Back
+  Action: R
+  Availability ID: AV-0001
+  [!] Warning - scheduling conflict: DR-0001 would lose its driver and need re-allocation.
+  Remove this period? [Y/N]: N
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 5
+
+========================================================================
+ Find a delivery
+========================================================================
+  Search [ID, client name, phone or address]: nobody
+  [!] No matching delivery exists. Try another search.
+  Search [ID, client name, phone or address]: Richmond
+  ID       Status     Client     From      To        Fee   
+  -------  ---------  ---------  --------  --------  ------
+  DR-0001  Allocated  Sam Smith  Hawthorn  Richmond  $25.04
+
+========================================================================
+ Delivery DR-0001  -  Allocated
+========================================================================
+  Client       : Sam Smith
+  Pickup       : 12 John St, Hawthorn VIC 3122
+  Drop-off     : 8 Bridge Rd, Richmond VIC 3121
+  Recipient    : Ravi Patel (0422111222)
+  Service      : Standard
+  Tracking code: EQX5X24E
+  Parcels:
+    P1: Laptop, size M, 2.5 kg - held by Sender at Hawthorn
+    P2: Charger, size S, 0.5 kg - held by Sender at Hawthorn
+  Quote        : $25.04 for 4.2 km; pickup 2026-10-27 09:30, delivery by 2026-10-27 11:38
+  Payment      : Online card, $25.04, Paid (ref SIM-4AFBC19D), Visa
+  Driver       : Dana Driver
+  History:
+    2026-10-27 08:00  Requested  by Sam Smith
+    2026-10-27 08:20  Quoted     by Oscar Office - Quoted $25.04
+    2026-10-27 08:40  Accepted   by Sam Smith - Payment by Online card
+    2026-10-27 09:00  Allocated  by Oscar Office - Allocated to Dana Driver
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 09:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 0
+  Goodbye.

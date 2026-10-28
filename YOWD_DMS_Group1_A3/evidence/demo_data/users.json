@@ -1,0 +1,88 @@
+[
+  {
+    "user_id": "U-0001",
+    "role": "Business Owner",
+    "name": "Olivia Owner",
+    "email": "owner@yowd.com.au",
+    "phone": "0390001000",
+    "salt": "92543d97c86e3a230768153af5715cff",
+    "hash": "0e2d8874978f5540d020ec084f6c354339ef4bfda28e91fef7b262c73f26ebfc",
+    "state": "Active",
+    "failed_logins": 0,
+    "locked_until": null
+  },
+  {
+    "user_id": "U-0002",
+    "role": "Office Staff",
+    "name": "Oscar Office",
+    "email": "office@yowd.com.au",
+    "phone": "0390001001",
+    "salt": "59683be4cad788e62971bf74b556a19e",
+    "hash": "db74a4b96cf9def6681814208c561a7c3ae69c0500a1f03ff9135533c42f4797",
+    "state": "Active",
+    "failed_logins": 0,
+    "locked_until": null
+  },
+  {
+    "user_id": "U-0003",
+    "role": "Delivery Staff",
+    "name": "Dana Driver",
+    "email": "dana@yowd.com.au",
+    "phone": "0411000009",
+    "salt": "eb5b0c0d6bc22a8ed0d0a29c1b2dcbcc",
+    "hash": "98450a2848a44c0db127fb4170d39ed6548ca3432cfb68ee9b7801b1dbbf548e",
+    "state": "Active",
+    "failed_logins": 0,
+    "locked_until": null
+  },
+  {
+    "user_id": "U-0004",
+    "role": "Delivery Staff",
+    "name": "Dev Driver",
+    "email": "dev@yowd.com.au",
+    "phone": "0411000002",
+    "salt": "685352436c4d3bde25cefb86246dca51",
+    "hash": "12904a7df56ebd5a23717d149c0fdeccf303955f5d53d572803cfbba4c1512e1",
+    "state": "Deactivated",
+    "failed_logins": 0,
+    "locked_until": null
+  },
+  {
+    "user_id": "U-0005",
+    "role": "Client",
+    "name": "Chloe Client",
+    "email": "chloe@example.com",
+    "phone": "0499888777",
+    "salt": "418908ba6a0eec7723b2e0f758d192e7",
+    "hash": "4f9a47240589c443dad08a5a04b98b81a4bb300bb9fc426178181e92e8783ffd",
+    "state": "Active",
+    "failed_logins": 0,
+    "locked_until": null,
+    "default_address": "8 Glenferrie Rd, Hawthorn VIC 3122"
+  },
+  {
+    "user_id": "U-0006",
+    "role": "Client",
+    "name": "Sam Smith",
+    "email": "sam@example.com",
+    "phone": "0498765000",
+    "salt": "3e44a9b5241d70e7dc81e6a5f5e852d3",
+    "hash": "0ec0ed964ff48bfa92465a67cd452a99f655fc202b89bc996bf7b0ed1fb7e425",
+    "state": "Deactivated",
+    "failed_logins": 0,
+    "locked_until": null,
+    "default_address": ""
+  },
+  {
+    "user_id": "U-0007",
+    "role": "Delivery Staff",
+    "name": "Priya Singh",
+    "email": "priya@yowd.com.au",
+    "phone": "0411000003",
+    "salt": "7e3166662e4848e8c787f1042d9a3d72",
+    "hash": "6531409a2cc97e4042cc41161a3009b4b3067dc97f9722584cc8aa3f72c2c1c0",
+    "state": "Active",
+    "failed_logins": 0,
+    "locked_until": null
+  }
+]

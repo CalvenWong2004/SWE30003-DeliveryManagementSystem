@@ -1,0 +1,22 @@
+sequenceDiagram
+autonumber
+actor C as Client
+participant DMS as DeliveryManagementSystem
+participant R as r:DeliveryRequest
+participant P as p:OnlinePayment
+participant G as PaymentGateway
+participant N as NotificationService
+C->>DMS: respondToQuote(r.id, accept, ONLINE)
+DMS->>R: acceptQuote(ONLINE, now, client)
+R->>R: QUOTED -> ACCEPTED
+R->>N: onStatusChange(ACCEPTED)
+R->>P: createPayment(ONLINE) - amount = quote.fee
+C->>DMS: payOnline(r.id)
+DMS->>P: settle(gateway, now)
+P->>G: charge(paymentId, amount)
+G-->>P: PaymentDeclined
+P-->>C: error shown, status stays DUE
+C->>DMS: changePaymentMethod(r.id, CASH_ON_DELIVERY)
+DMS->>R: changePaymentMethod(COD)
+R->>R: replace with c:CashOnDelivery (DUE)
+Note over R: request stays ACCEPTED and can still be allocated, the driver collects cash at drop-off

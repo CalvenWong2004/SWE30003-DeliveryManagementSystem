@@ -1,0 +1,179 @@
+$ python -m yowd_dms --data evidence/demo_data --demo-time "2026-10-27 10:05"
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 10:05]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 3
+
+========================================================================
+ Track a parcel
+========================================================================
+  Tracking code [8 characters from your SMS]: ABC123
+  [!] No delivery matches that tracking code. Check the code and try again.
+  Tracking code [8 characters from your SMS]: RYGJ5RRE
+
+========================================================================
+ Tracking RYGJ5RRE
+========================================================================
+  For          : Mei Chen
+  Delivering to: Southbank 3006
+  Status       : Allocated
+  Expected by  : 2026-10-27 10:38
+  Last update  : 2026-10-27 09:00
+  Cash due on delivery: $25.00
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 10:05]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: dana@yowd.com.au
+  Password: *********
+  [OK] Welcome, Dana Driver (Delivery Staff).
+
+========================================================================
+ Delivery Staff menu - Dana Driver
+========================================================================
+   1) My deliveries
+   2) Record pickup
+   3) Complete a delivery (cash and hand-over)
+   4) My details
+   0) Log out
+  Choose: 2
+
+========================================================================
+ Record pickup
+========================================================================
+  ID       Status     Client     From      To        Fee   
+  -------  ---------  ---------  --------  --------  ------
+  DR-0001  Allocated  Sam Smith  Hawthorn  Richmond  $25.04
+  Delivery ID: DR-0001
+   P1: Laptop, 2.5 kg
+   P2: Charger, 0.5 kg
+  All parcels listed above collected? [Y/N]: Y
+  [OK] DR-0001 picked up; you now hold 2 parcel(s).
+
+========================================================================
+ Delivery Staff menu - Dana Driver
+========================================================================
+   1) My deliveries
+   2) Record pickup
+   3) Complete a delivery (cash and hand-over)
+   4) My details
+   0) Log out
+  Choose: 3
+
+========================================================================
+ Complete a delivery
+========================================================================
+  ID       Status     Client     From      To        Fee   
+  -------  ---------  ---------  --------  --------  ------
+  DR-0001  Picked up  Sam Smith  Hawthorn  Richmond  $25.04
+  Delivery ID: DR-0001
+  Received by (name) (Enter = Ravi Patel): 
+  [OK] DR-0001 delivered to Ravi Patel.
+
+========================================================================
+ Delivery Staff menu - Dana Driver
+========================================================================
+   1) My deliveries
+   2) Record pickup
+   3) Complete a delivery (cash and hand-over)
+   4) My details
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 10:05]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: dev@yowd.com.au
+  Password: *********
+  [OK] Welcome, Dev Driver (Delivery Staff).
+
+========================================================================
+ Delivery Staff menu - Dev Driver
+========================================================================
+   1) My deliveries
+   2) Record pickup
+   3) Complete a delivery (cash and hand-over)
+   4) My details
+   0) Log out
+  Choose: 2
+
+========================================================================
+ Record pickup
+========================================================================
+  ID       Status     Client        From     To         Fee   
+  -------  ---------  ------------  -------  ---------  ------
+  DR-0002  Allocated  Chloe Client  Fitzroy  Southbank  $25.00
+  Delivery ID: DR-0002
+   P1: Documents, 1 kg
+  All parcels listed above collected? [Y/N]: Y
+  [OK] DR-0002 picked up; you now hold 1 parcel(s).
+
+========================================================================
+ Delivery Staff menu - Dev Driver
+========================================================================
+   1) My deliveries
+   2) Record pickup
+   3) Complete a delivery (cash and hand-over)
+   4) My details
+   0) Log out
+  Choose: 3
+
+========================================================================
+ Complete a delivery
+========================================================================
+  ID       Status     Client        From     To         Fee   
+  -------  ---------  ------------  -------  ---------  ------
+  DR-0002  Picked up  Chloe Client  Fitzroy  Southbank  $25.00
+  Delivery ID: DR-0002
+  Cash due: $25.00
+  Cash received [$]: 20
+  [!] Cash collected ($20.00) must equal the quoted amount ($25.00).
+  Cash received [$]: 25.00
+  [OK] Cash recorded; payment is Paid.
+  Received by (name) (Enter = Mei Chen): 
+  [OK] DR-0002 delivered to Mei Chen.
+
+========================================================================
+ Delivery Staff menu - Dev Driver
+========================================================================
+   1) My deliveries
+   2) Record pickup
+   3) Complete a delivery (cash and hand-over)
+   4) My details
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 10:05]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 0
+  Goodbye.

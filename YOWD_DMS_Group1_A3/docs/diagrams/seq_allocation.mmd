@@ -1,0 +1,32 @@
+sequenceDiagram
+autonumber
+actor O as Office Staff
+participant UI as OfficeScreens
+participant DMS as DeliveryManagementSystem
+participant DR as DeliveryRegistry
+participant SR as StaffRoster
+participant R as r:DeliveryRequest
+O->>UI: 3 Allocate delivery staff
+UI->>DMS: awaitingAllocation()
+DMS->>DR: withStatus(ACCEPTED)
+DR-->>UI: [r]
+UI->>DMS: availableStaffFor(r.id)
+DMS->>R: committedPeriod()
+DMS->>SR: availableStaff(start, end)
+loop each active driver
+  SR->>SR: covered by a StaffAvailability?
+  SR->>DR: commitmentsFor(driver) - any overlap?
+end
+SR-->>UI: [Dana]
+O->>UI: Driver ID U-0004 (Dev)
+UI->>DMS: allocate(r.id, U-0004)
+DMS->>SR: isFree(U-0004, start, end)
+SR-->>DMS: false
+DMS-->>UI: StateError "no longer available"
+O->>UI: Driver ID U-0003 (Dana)
+UI->>DMS: allocate(r.id, U-0003)
+DMS->>SR: isFree(U-0003, start, end)
+SR-->>DMS: true
+DMS->>R: allocate(U-0003, now, office, "Dana Driver")
+R->>R: ACCEPTED -> ALLOCATED, append StatusChange
+DMS->>DMS: save()

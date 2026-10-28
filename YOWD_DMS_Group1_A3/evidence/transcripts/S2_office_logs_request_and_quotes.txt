@@ -1,0 +1,234 @@
+$ python -m yowd_dms --data evidence/demo_data --demo-time "2026-10-27 08:20"
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 08:20]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: office@yowd.com.au
+  Password: *********
+  [OK] Welcome, Oscar Office (Office Staff).
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 1
+
+========================================================================
+ Log a request for a client
+========================================================================
+  Find client by name, email or phone: 0412
+  ID      Name          Email              Phone     
+  ------  ------------  -----------------  ----------
+  U-0005  Chloe Client  chloe@example.com  0412345678
+   U) Use a client listed above
+   N) Create a new client record
+  Choose: U
+  Client ID: U-0005
+
+========================================================================
+ Request a delivery   (type q at any prompt to cancel)
+========================================================================
+
+  Pickup address (Greater Melbourne only)
+  Street [e.g. 12 John St]: 100 Smith St
+  Suburb [e.g. Hawthorn]: Fitzroy
+  Postcode [4 digits]: 3065
+  [OK] Pickup: 100 Smith St, Fitzroy VIC 3065
+
+  Drop-off address (Greater Melbourne only)
+  Street [e.g. 12 John St]: 20 Clarendon St
+  Suburb [e.g. Hawthorn]: Southbank
+  Postcode [4 digits]: 3006
+  [OK] Drop-off: 20 Clarendon St, Southbank VIC 3006
+
+  Recipient
+  Recipient name: Mei Chen
+  Recipient phone [e.g. 0412 345 678]: 0433 222 333
+
+  Parcels (all travel together with one driver)
+  P1 description [e.g. Documents]: Documents
+   S) Small (fits a satchel)
+   M) Medium (shoebox)
+   L) Large (up to 60 cm)
+  P1 size: S
+  P1 weight [kg, max 30]: 1
+  Add another parcel? [Y/N]: N
+   1) Standard (same day)
+   2) Express (priority, dearer)
+  Service level: 2
+
+========================================================================
+ Please check these details before submitting
+========================================================================
+  1. Pickup   : 100 Smith St, Fitzroy VIC 3065
+  2. Drop-off : 20 Clarendon St, Southbank VIC 3006
+  3. Recipient: Mei Chen, 0433222333
+  4. Parcels  : P1 Documents S 1 kg
+  5. Service  : Express
+   S) Submit request
+   E) Edit a section
+   C) Cancel without saving
+  Choose: S
+  [OK] Request DR-0002 recorded with status Requested.
+  Recipient tracking code: RYGJ5RRE
+  Office staff will send a quote shortly.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 2
+
+========================================================================
+ Prepare delivery quotes
+========================================================================
+  ID       Status     Client        From      To         Fee
+  -------  ---------  ------------  --------  ---------  ---
+  DR-0001  Requested  Sam Smith     Hawthorn  Richmond   -  
+  DR-0002  Requested  Chloe Client  Fitzroy   Southbank  -  
+  Delivery ID to quote: DR-0001
+
+========================================================================
+ Delivery DR-0001  -  Requested
+========================================================================
+  Client       : Sam Smith
+  Pickup       : 12 John St, Hawthorn VIC 3122
+  Drop-off     : 8 Bridge Rd, Richmond VIC 3121
+  Recipient    : Ravi Patel (0422111222)
+  Service      : Standard
+  Tracking code: EQX5X24E
+  Parcels:
+    P1: Laptop, size M, 2.5 kg - held by Sender at Hawthorn
+    P2: Charger, size S, 0.5 kg - held by Sender at Hawthorn
+  Driver       : not allocated
+  History:
+    2026-10-27 08:00  Requested  by Sam Smith
+   Q) Prepare a quote
+   D) Decline (cannot be carried)
+  Action: Q
+  Estimated pickup [YYYY-MM-DD HH:MM] (Enter = 2026-10-27 10:20): tomorrow
+  [!] Date/time must be in the form YYYY-MM-DD HH:MM, for example 2026-10-27 09:30.
+  Estimated pickup [YYYY-MM-DD HH:MM] (Enter = 2026-10-27 10:20): 2026-10-27 07:00
+  [!] Pickup time cannot be in the past.
+  Estimated pickup [YYYY-MM-DD HH:MM] (Enter = 2026-10-27 10:20): 2026-10-27 09:30
+  Distance          : 4.2 km
+  Suggested fee     : $25.04 (Standard)
+  Delivery by       : 2026-10-27 11:38
+  Already committed : 0 deliveries; 1 driver(s) free then
+  Change the suggested fee? [Y/N]: N
+  [OK] Quote of $25.04 sent to the client; valid until 2026-10-28 08:20.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 2
+
+========================================================================
+ Prepare delivery quotes
+========================================================================
+  ID       Status     Client        From     To         Fee
+  -------  ---------  ------------  -------  ---------  ---
+  DR-0002  Requested  Chloe Client  Fitzroy  Southbank  -  
+  Delivery ID to quote: DR-0002
+
+========================================================================
+ Delivery DR-0002  -  Requested
+========================================================================
+  Client       : Chloe Client
+  Pickup       : 100 Smith St, Fitzroy VIC 3065
+  Drop-off     : 20 Clarendon St, Southbank VIC 3006
+  Recipient    : Mei Chen (0433222333)
+  Service      : Express
+  Tracking code: RYGJ5RRE
+  Parcels:
+    P1: Documents, size S, 1 kg - held by Sender at Fitzroy
+  Driver       : not allocated
+  History:
+    2026-10-27 08:20  Requested  by Oscar Office
+   Q) Prepare a quote
+   D) Decline (cannot be carried)
+  Action: Q
+  Estimated pickup [YYYY-MM-DD HH:MM] (Enter = 2026-10-27 10:20): 2026-10-27 10:00
+  Distance          : 3.8 km
+  Suggested fee     : $24.84 (Express)
+  Delivery by       : 2026-10-27 10:38
+  Already committed : 0 deliveries; 1 driver(s) free then
+  Change the suggested fee? [Y/N]: Y
+  Fee [$]: abc
+  [!] Enter an amount such as 45.50.
+  Fee [$]: 25
+  Reason for the change: 
+  [!] Reason cannot be blank.
+  Reason for the change: Regular client rate agreed by phone
+  [OK] Quote of $25.00 sent to the client; valid until 2026-10-28 08:20.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 08:20]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 0
+  Goodbye.

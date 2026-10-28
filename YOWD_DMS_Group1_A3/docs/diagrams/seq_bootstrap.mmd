@@ -1,0 +1,23 @@
+sequenceDiagram
+autonumber
+participant Main as __main__
+participant DMS as DeliveryManagementSystem
+participant UD as UserDirectory
+participant SR as StaffRoster
+participant DR as DeliveryRegistry
+Main->>DMS: start(dataDir, clock)
+DMS->>DMS: create JsonStore, ServiceArea, Standard/ExpressPricing, PaymentGateway
+DMS->>UD: create + load()
+UD-->>DMS: concrete Client / OfficeStaff / BusinessOwner / DeliveryStaff restored
+DMS->>DMS: create NotificationService(outbox, UD.emailOf)
+DMS->>SR: create(store, UD) + load()
+SR->>UD: deliveryStaff()
+Note over SR: refuses to start if availability names an unknown driver
+DMS->>DR: create(store, UD, SR, area, pricing, notifier, clock) + load()
+DR->>UD: find(client / driver ids) - integrity check
+DMS->>SR: setCommitmentSource(DR.commitmentsFor)
+DMS->>DR: attachObservers()
+Note over DR: observers attached after history is rebuilt, so nothing is re-sent
+DMS->>DR: expireLapsedQuotes()
+DMS->>DMS: save()
+Main->>Main: seed_demo() if --seed-demo, then ConsoleApp(dms).run()

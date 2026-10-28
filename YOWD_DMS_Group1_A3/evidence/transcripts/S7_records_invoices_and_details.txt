@@ -1,0 +1,890 @@
+$ python -m yowd_dms --data evidence/demo_data --demo-time "2026-10-27 17:30"
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:30]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: chloe@example.com
+  Password: *********
+  [OK] Welcome, Chloe Client (Client).
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 7
+
+========================================================================
+ My details
+========================================================================
+  ID      : U-0005   (Client, Active)
+  Name    : Chloe Client
+  Email   : chloe@example.com   (login identity; cannot change)
+  Phone   : 0412345678
+  Address : 12 John St, Hawthorn VIC 3122
+   D) Update my contact details
+   W) Change my password
+   B) Back
+  Action: D
+  Press Enter to keep a value, or type a new one.
+  Name (Enter = Chloe Client): 
+  Phone [e.g. 0412 345 678] (Enter = 0412345678): 123
+  [!] Phone must be an Australian number, e.g. 0412 345 678.
+  Phone [e.g. 0412 345 678] (Enter = 0412345678): 0499 888 777
+  Address [street, suburb, postcode, or - to clear] (Enter = 12 John St, Hawthorn VIC 3122): 
+  Save these changes? [Y/N]: N
+  Changes discarded; previous details kept.
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 7
+
+========================================================================
+ My details
+========================================================================
+  ID      : U-0005   (Client, Active)
+  Name    : Chloe Client
+  Email   : chloe@example.com   (login identity; cannot change)
+  Phone   : 0412345678
+  Address : 12 John St, Hawthorn VIC 3122
+   D) Update my contact details
+   W) Change my password
+   B) Back
+  Action: D
+  Press Enter to keep a value, or type a new one.
+  Name (Enter = Chloe Client): 
+  Phone [e.g. 0412 345 678] (Enter = 0412345678): 0499 888 777
+  Address [street, suburb, postcode, or - to clear] (Enter = 12 John St, Hawthorn VIC 3122): 8 Glenferrie Rd, Hawthorn VIC 3122
+  Save these changes? [Y/N]: Y
+  [OK] Your details have been updated.
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 1
+
+========================================================================
+ Request a delivery   (type q at any prompt to cancel)
+========================================================================
+
+  Pickup address (Greater Melbourne only)
+  Street [e.g. 12 John St]: 8 Glenferrie Rd
+  Suburb [e.g. Hawthorn]: Hawthorn
+  Postcode [4 digits]: 3122
+  [OK] Pickup: 8 Glenferrie Rd, Hawthorn VIC 3122
+
+  Drop-off address (Greater Melbourne only)
+  Street [e.g. 12 John St]: 20 Clarendon St
+  Suburb [e.g. Hawthorn]: Southbank
+  Postcode [4 digits]: 3006
+  [OK] Drop-off: 20 Clarendon St, Southbank VIC 3006
+
+  Recipient
+  Recipient name: Mei Chen
+  Recipient phone [e.g. 0412 345 678]: 0433 222 333
+
+  Parcels (all travel together with one driver)
+  P1 description [e.g. Documents]: Books
+   S) Small (fits a satchel)
+   M) Medium (shoebox)
+   L) Large (up to 60 cm)
+  P1 size: M
+  P1 weight [kg, max 30]: 4
+  Add another parcel? [Y/N]: N
+   1) Standard (same day)
+   2) Express (priority, dearer)
+  Service level: 1
+
+========================================================================
+ Please check these details before submitting
+========================================================================
+  1. Pickup   : 8 Glenferrie Rd, Hawthorn VIC 3122
+  2. Drop-off : 20 Clarendon St, Southbank VIC 3006
+  3. Recipient: Mei Chen, 0433222333
+  4. Parcels  : P1 Books M 4 kg
+  5. Service  : Standard
+   S) Submit request
+   E) Edit a section
+   C) Cancel without saving
+  Choose: S
+  [OK] Request DR-0003 recorded with status Requested.
+  Recipient tracking code: DHQ2N47W
+  Office staff will send a quote shortly.
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:30]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: office@yowd.com.au
+  Password: *********
+  [OK] Welcome, Oscar Office (Office Staff).
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 2
+
+========================================================================
+ Prepare delivery quotes
+========================================================================
+  ID       Status     Client        From      To         Fee
+  -------  ---------  ------------  --------  ---------  ---
+  DR-0003  Requested  Chloe Client  Hawthorn  Southbank  -  
+  Delivery ID to quote: DR-0003
+
+========================================================================
+ Delivery DR-0003  -  Requested
+========================================================================
+  Client       : Chloe Client
+  Pickup       : 8 Glenferrie Rd, Hawthorn VIC 3122
+  Drop-off     : 20 Clarendon St, Southbank VIC 3006
+  Recipient    : Mei Chen (0433222333)
+  Service      : Standard
+  Tracking code: DHQ2N47W
+  Parcels:
+    P1: Books, size M, 4 kg - held by Sender at Hawthorn
+  Driver       : not allocated
+  History:
+    2026-10-27 17:30  Requested  by Chloe Client
+   Q) Prepare a quote
+   D) Decline (cannot be carried)
+  Action: Q
+  Estimated pickup [YYYY-MM-DD HH:MM] (Enter = 2026-10-27 19:30): 2026-10-28 09:00
+  Distance          : 8.1 km
+  Suggested fee     : $26.72 (Standard)
+  Delivery by       : 2026-10-28 11:16
+  Already committed : 0 deliveries; 1 driver(s) free then
+  Change the suggested fee? [Y/N]: N
+  [OK] Quote of $26.72 sent to the client; valid until 2026-10-28 17:30.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 9
+
+========================================================================
+ Client records
+========================================================================
+  Find client [name, email, phone or ID] (Enter = all): sam
+  ID      Name       Email            Phone       Account
+  ------  ---------  ---------------  ----------  -------
+  U-0006  Sam Smith  sam@example.com  0498765432  Active 
+   U) Update a client's details
+   D) Deactivate a client
+   B) Back
+  Action: U
+  Client ID: U-0006
+  ID      : U-0006   (Client, Active)
+  Name    : Sam Smith
+  Email   : sam@example.com   (login identity; cannot change)
+  Phone   : 0498765432
+  Address : (none)
+  Press Enter to keep a value, or type a new one.
+  Name (Enter = Sam Smith): 
+  Phone [e.g. 0412 345 678] (Enter = 0498765432): 0498 765 000
+  Address [street, suburb, postcode, or - to clear] (Enter = -): 
+  Save these changes? [Y/N]: Y
+  [OK] Sam Smith's details updated.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 9
+
+========================================================================
+ Client records
+========================================================================
+  Find client [name, email, phone or ID] (Enter = all): 
+  ID      Name          Email              Phone       Account
+  ------  ------------  -----------------  ----------  -------
+  U-0005  Chloe Client  chloe@example.com  0499888777  Active 
+  U-0006  Sam Smith     sam@example.com    0498765000  Active 
+   U) Update a client's details
+   D) Deactivate a client
+   B) Back
+  Action: D
+  Client ID: U-0005
+  ID      : U-0005   (Client, Active)
+  Name    : Chloe Client
+  Email   : chloe@example.com   (login identity; cannot change)
+  Phone   : 0499888777
+  Address : 8 Glenferrie Rd, Hawthorn VIC 3122
+  Deactivate Chloe Client? History is kept. [Y/N]: Y
+  [!] Chloe Client still has open deliveries (DR-0003); close or cancel them first.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 9
+
+========================================================================
+ Client records
+========================================================================
+  Find client [name, email, phone or ID] (Enter = all): sam
+  ID      Name       Email            Phone       Account
+  ------  ---------  ---------------  ----------  -------
+  U-0006  Sam Smith  sam@example.com  0498765000  Active 
+   U) Update a client's details
+   D) Deactivate a client
+   B) Back
+  Action: D
+  Client ID: U-0006
+  ID      : U-0006   (Client, Active)
+  Name    : Sam Smith
+  Email   : sam@example.com   (login identity; cannot change)
+  Phone   : 0498765000
+  Address : (none)
+  Deactivate Sam Smith? History is kept. [Y/N]: Y
+  [OK] Sam Smith deactivated; they can no longer log in.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:30]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: chloe@example.com
+  Password: *********
+  [OK] Welcome, Chloe Client (Client).
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 3
+
+========================================================================
+ Respond to a quote
+========================================================================
+  ID       Status  Client        From      To         Fee   
+  -------  ------  ------------  --------  ---------  ------
+  DR-0003  Quoted  Chloe Client  Hawthorn  Southbank  $26.72
+  Delivery ID: DR-0003
+
+========================================================================
+ Delivery DR-0003  -  Quoted
+========================================================================
+  Client       : Chloe Client
+  Pickup       : 8 Glenferrie Rd, Hawthorn VIC 3122
+  Drop-off     : 20 Clarendon St, Southbank VIC 3006
+  Recipient    : Mei Chen (0433222333)
+  Service      : Standard
+  Tracking code: DHQ2N47W
+  Parcels:
+    P1: Books, size M, 4 kg - held by Sender at Hawthorn
+  Quote        : $26.72 for 8.1 km; pickup 2026-10-28 09:00, delivery by 2026-10-28 11:16
+                 valid until 2026-10-28 17:30
+  Driver       : not allocated
+  History:
+    2026-10-27 17:30  Requested  by Chloe Client
+    2026-10-27 17:30  Quoted     by Oscar Office - Quoted $26.72
+   A) Accept the quote
+   D) Decline the quote
+  Your answer: A
+   1) Pay online now by card
+   2) Cash on delivery to the driver
+  Payment method: 1
+  [OK] Quote accepted. DR-0003 is waiting for a driver to be allocated.
+  Pay the online amount now? [Y/N]: N
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: T
+  [OK] Demo: the next card payment will be declined.
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 4
+
+========================================================================
+ Pay for a delivery
+========================================================================
+  ID       Status    Client        From      To         Fee   
+  -------  --------  ------------  --------  ---------  ------
+  DR-0003  Accepted  Chloe Client  Hawthorn  Southbank  $26.72
+  Delivery ID: DR-0003
+  Amount due: $26.72 by Online card
+   P) Pay now by card
+   C) Switch to cash on delivery
+  Choose: P
+  [Simulation] Card details are entered on the payment provider's page; the DMS never sees them.
+  [!] The card provider declined the payment.
+   R) Try the card again
+   C) Switch to cash on delivery
+   L) Decide later (stays Due)
+  Choose: C
+  [OK] Payment changed to cash on delivery; pay the driver at drop-off.
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 6
+
+========================================================================
+ View an invoice
+========================================================================
+  ID       Status     Client        From      To         Fee   
+  -------  ---------  ------------  --------  ---------  ------
+  DR-0002  Delivered  Chloe Client  Fitzroy   Southbank  $25.00
+  DR-0003  Accepted   Chloe Client  Hawthorn  Southbank  $26.72
+  Delivery ID: DR-0003
+
+========================================================================
+ Invoice INV-DR-0003
+========================================================================
+  Issued    : 2026-10-27 17:30
+  Bill to   : Chloe Client
+  Delivery  : DR-0003
+  Description                                                 Amount
+  ----------------------------------------------------------  ------
+  Standard delivery, Hawthorn to Southbank, 1 parcel, 8.1 km  $26.72
+  TOTAL                                                       $26.72
+  Payment   : Cash on delivery - Due
+
+========================================================================
+ Client menu - Chloe Client
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:30]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: office@yowd.com.au
+  Password: *********
+  [OK] Welcome, Oscar Office (Office Staff).
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 10
+
+========================================================================
+ Payment records
+========================================================================
+   1) All
+   2) Due
+   3) Paid
+   4) Cancelled
+  Show: 2
+  Delivery  Client        Method            Amount  Status  Reference  Paid at
+  --------  ------------  ----------------  ------  ------  ---------  -------
+  DR-0003   Chloe Client  Cash on delivery  $26.72  Due     -          -      
+  1 payment(s); $0.00 received.
+   I) View an invoice
+   M) Mark a due payment as paid
+   B) Back
+  Action: M
+  Delivery ID: DR-0003
+  Use this only for a payment settled outside the DMS, e.g. paid at the office.
+  Note [how and when it was paid]: 
+  [!] Note cannot be blank.
+  Note [how and when it was paid]: Client paid cash at the office counter
+  Mark DR-0003 as paid? [Y/N]: N
+  Not recorded; the payment is still Due.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 10
+
+========================================================================
+ Payment records
+========================================================================
+   1) All
+   2) Due
+   3) Paid
+   4) Cancelled
+  Show: 2
+  Delivery  Client        Method            Amount  Status  Reference  Paid at
+  --------  ------------  ----------------  ------  ------  ---------  -------
+  DR-0003   Chloe Client  Cash on delivery  $26.72  Due     -          -      
+  1 payment(s); $0.00 received.
+   I) View an invoice
+   M) Mark a due payment as paid
+   B) Back
+  Action: M
+  Delivery ID: DR-0003
+  Use this only for a payment settled outside the DMS, e.g. paid at the office.
+  Note [how and when it was paid]: Client paid cash at the office counter
+  Mark DR-0003 as paid? [Y/N]: Y
+  [OK] DR-0003 payment recorded as paid.
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 10
+
+========================================================================
+ Payment records
+========================================================================
+   1) All
+   2) Due
+   3) Paid
+   4) Cancelled
+  Show: 1
+  Delivery  Client        Method              Amount  Status  Reference      Paid at         
+  --------  ------------  ------------------  ------  ------  -------------  ----------------
+  DR-0001   Sam Smith     Online card (Visa)  $25.04  Paid    SIM-4AFBC19D   2026-10-27 08:40
+  DR-0002   Chloe Client  Cash on delivery    $25.00  Paid    CASH-U-0004    2026-10-27 10:05
+  DR-0003   Chloe Client  Cash on delivery    $26.72  Paid    MANUAL-U-0002  2026-10-27 17:30
+  3 payment(s); $76.76 received.
+   I) View an invoice
+   M) Mark a due payment as paid
+   B) Back
+  Action: I
+  Delivery ID: DR-0001
+
+========================================================================
+ Invoice INV-DR-0001
+========================================================================
+  Issued    : 2026-10-27 17:30
+  Bill to   : Sam Smith
+  Delivery  : DR-0001
+  Description                                                 Amount
+  ----------------------------------------------------------  ------
+  Standard delivery, Hawthorn to Richmond, 2 parcels, 4.2 km  $25.04
+  TOTAL                                                       $25.04
+  Payment   : Online card (Visa) - Paid, paid 2026-10-27 08:40
+  Reference : SIM-4AFBC19D
+
+========================================================================
+ Office Staff menu - Oscar Office
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:30]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: owner@yowd.com.au
+  Password: *********
+  [OK] Welcome, Olivia Owner (Business Owner).
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 8
+
+========================================================================
+ Manage staff
+========================================================================
+  ID      Name          Role            Email               Account    
+  ------  ------------  --------------  ------------------  -----------
+  U-0001  Olivia Owner  Business Owner  owner@yowd.com.au   Active     
+  U-0002  Oscar Office  Office Staff    office@yowd.com.au  Active     
+  U-0003  Dana Driver   Delivery Staff  dana@yowd.com.au    Active     
+  U-0004  Dev Driver    Delivery Staff  dev@yowd.com.au     Deactivated
+  U-0007  Priya Singh   Delivery Staff  priya@yowd.com.au   Active     
+   A) Add a staff member
+   U) Update a staff member's details
+   D) Deactivate a leaver
+   B) Back
+  Action: U
+  Staff ID: U-0003
+  ID      : U-0003   (Delivery Staff, Active)
+  Name    : Dana Driver
+  Email   : dana@yowd.com.au   (login identity; cannot change)
+  Phone   : 0411000001
+  Press Enter to keep a value, or type a new one.
+  Name (Enter = Dana Driver): 
+  Phone [e.g. 0412 345 678] (Enter = 0411000001): 0411 000 009
+  Save these changes? [Y/N]: Y
+  [OK] Dana Driver's details updated.
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 4
+
+========================================================================
+ Manage staff availability
+========================================================================
+  ID      Driver       Availability periods
+  ------  -----------  --------------------
+  U-0003  Dana Driver  2                   
+  U-0007  Priya Singh  0                   
+  Driver ID: U-0003
+
+  Availability of Dana Driver:
+  ID       Available                           
+  -------  ------------------------------------
+  AV-0001  2026-10-27 08:00 to 2026-10-27 18:00
+  AV-0002  2026-10-28 08:00 to 2026-10-28 18:00
+  Open deliveries:
+  (none)
+   A) Add a period
+   R) Remove a period
+   B) Back
+  Action: R
+  Availability ID: AV-0002
+  [!] Warning - no cover: No other delivery staff member is available 2026-10-28 08:00 to 2026-10-28 18:00.
+  Remove this period? [Y/N]: N
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 8
+
+========================================================================
+ Manage staff
+========================================================================
+  ID      Name          Role            Email               Account    
+  ------  ------------  --------------  ------------------  -----------
+  U-0001  Olivia Owner  Business Owner  owner@yowd.com.au   Active     
+  U-0002  Oscar Office  Office Staff    office@yowd.com.au  Active     
+  U-0003  Dana Driver   Delivery Staff  dana@yowd.com.au    Active     
+  U-0004  Dev Driver    Delivery Staff  dev@yowd.com.au     Deactivated
+  U-0007  Priya Singh   Delivery Staff  priya@yowd.com.au   Active     
+   A) Add a staff member
+   U) Update a staff member's details
+   D) Deactivate a leaver
+   B) Back
+  Action: D
+  Staff ID: U-0003
+  [!] Warning - no cover: No other delivery staff member is available 2026-10-27 17:30 to 2026-10-27 18:00; 2026-10-28 08:00 to 2026-10-28 18:00.
+  Deactivate Dana Driver? [Y/N]: N
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 11
+
+========================================================================
+ My details
+========================================================================
+  ID      : U-0001   (Business Owner, Active)
+  Name    : Olivia Owner
+  Email   : owner@yowd.com.au   (login identity; cannot change)
+  Phone   : 0390001000
+   D) Update my contact details
+   W) Change my password
+   B) Back
+  Action: W
+  Current password: *********
+  New password [8+ characters]: ************
+  Repeat new password: ************
+  [!] The current password is incorrect.
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:30]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 0
+  Goodbye.

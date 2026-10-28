@@ -1,0 +1,24 @@
+sequenceDiagram
+autonumber
+actor D as Delivery Staff
+participant DMS as DeliveryManagementSystem
+participant R as r:DeliveryRequest
+participant P as c:CashOnDelivery
+participant N as NotificationService
+actor Rc as Recipient
+D->>DMS: recordPickup(r.id)
+DMS->>R: recordPickup(driverId, name, now)
+R->>R: check driver = assigned, ALLOCATED -> PICKED_UP
+R->>R: CustodyRecord per parcel (holder = driver)
+R->>N: onStatusChange(PICKED_UP)
+N-->>Rc: SMS with tracking code
+D->>DMS: collectCash(r.id, 20.00)
+DMS->>P: recordCollection(20.00)
+P-->>D: StateError - must equal quoted 25.00
+D->>DMS: collectCash(r.id, 25.00)
+P->>P: DUE -> PAID
+D->>DMS: recordHandover(r.id, "Mei Chen")
+DMS->>R: recordHandover(driverId, "Mei Chen", now)
+R->>R: payment PAID? custody -> Mei Chen, PICKED_UP -> DELIVERED
+R->>N: onStatusChange(DELIVERED)
+N-->>Rc: SMS delivered

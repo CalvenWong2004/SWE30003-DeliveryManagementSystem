@@ -1,0 +1,310 @@
+[
+  {
+    "request_id": "DR-0001",
+    "tracking_code": "EQX5X24E",
+    "client_id": "U-0006",
+    "created_by_id": "U-0006",
+    "created_at": "2026-10-27T08:00:00",
+    "pickup": {
+      "street": "12 John St",
+      "suburb": "Hawthorn",
+      "postcode": "3122",
+      "state": "VIC"
+    },
+    "dropoff": {
+      "street": "8 Bridge Rd",
+      "suburb": "Richmond",
+      "postcode": "3121",
+      "state": "VIC"
+    },
+    "recipient": {
+      "name": "Ravi Patel",
+      "phone": "0422111222"
+    },
+    "parcels": [
+      {
+        "label": "P1",
+        "description": "Laptop",
+        "size": "M",
+        "weight_kg": 2.5
+      },
+      {
+        "label": "P2",
+        "description": "Charger",
+        "size": "S",
+        "weight_kg": 0.5
+      }
+    ],
+    "service_level": "Standard",
+    "quote": {
+      "suggested_fee": 25.04,
+      "fee": 25.04,
+      "adjustment_reason": "",
+      "distance_km": 4.2,
+      "estimated_pickup": "2026-10-27T09:30:00",
+      "estimated_delivery": "2026-10-27T11:38:00",
+      "issued_at": "2026-10-27T08:20:00",
+      "issued_by_user_id": "U-0002"
+    },
+    "payment": {
+      "method": "Online card",
+      "payment_id": "PAY-DR-0001",
+      "amount": 25.04,
+      "created_at": "2026-10-27T08:40:00",
+      "status": "Paid",
+      "paid_at": "2026-10-27T08:40:00",
+      "reference": "SIM-4AFBC19D",
+      "card_type": "Visa",
+      "recorded_by": "",
+      "note": ""
+    },
+    "assigned_staff_id": "U-0003",
+    "history": [
+      {
+        "status": "Requested",
+        "at": "2026-10-27T08:00:00",
+        "by": "U-0006",
+        "note": ""
+      },
+      {
+        "status": "Quoted",
+        "at": "2026-10-27T08:20:00",
+        "by": "U-0002",
+        "note": "Quoted $25.04"
+      },
+      {
+        "status": "Accepted",
+        "at": "2026-10-27T08:40:00",
+        "by": "U-0006",
+        "note": "Payment by Online card"
+      },
+      {
+        "status": "Allocated",
+        "at": "2026-10-27T09:00:00",
+        "by": "U-0002",
+        "note": "Allocated to Dana Driver"
+      },
+      {
+        "status": "Picked up",
+        "at": "2026-10-27T10:05:00",
+        "by": "U-0003",
+        "note": "Collected by Dana Driver"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-10-27T10:05:00",
+        "by": "U-0003",
+        "note": "Received by Ravi Patel"
+      }
+    ],
+    "custody": [
+      {
+        "parcel": "P1",
+        "holder": "Dana Driver",
+        "at": "2026-10-27T10:05:00",
+        "event": "Picked up"
+      },
+      {
+        "parcel": "P2",
+        "holder": "Dana Driver",
+        "at": "2026-10-27T10:05:00",
+        "event": "Picked up"
+      },
+      {
+        "parcel": "P1",
+        "holder": "Ravi Patel",
+        "at": "2026-10-27T10:05:00",
+        "event": "Handed over"
+      },
+      {
+        "parcel": "P2",
+        "holder": "Ravi Patel",
+        "at": "2026-10-27T10:05:00",
+        "event": "Handed over"
+      }
+    ]
+  },
+  {
+    "request_id": "DR-0002",
+    "tracking_code": "RYGJ5RRE",
+    "client_id": "U-0005",
+    "created_by_id": "U-0002",
+    "created_at": "2026-10-27T08:20:00",
+    "pickup": {
+      "street": "100 Smith St",
+      "suburb": "Fitzroy",
+      "postcode": "3065",
+      "state": "VIC"
+    },
+    "dropoff": {
+      "street": "20 Clarendon St",
+      "suburb": "Southbank",
+      "postcode": "3006",
+      "state": "VIC"
+    },
+    "recipient": {
+      "name": "Mei Chen",
+      "phone": "0433222333"
+    },
+    "parcels": [
+      {
+        "label": "P1",
+        "description": "Documents",
+        "size": "S",
+        "weight_kg": 1.0
+      }
+    ],
+    "service_level": "Express",
+    "quote": {
+      "suggested_fee": 24.84,
+      "fee": 25.0,
+      "adjustment_reason": "Regular client rate agreed by phone",
+      "distance_km": 3.8,
+      "estimated_pickup": "2026-10-27T10:00:00",
+      "estimated_delivery": "2026-10-27T10:38:00",
+      "issued_at": "2026-10-27T08:20:00",
+      "issued_by_user_id": "U-0002"
+    },
+    "payment": {
+      "method": "Cash on delivery",
+      "payment_id": "PAY-DR-0002",
+      "amount": 25.0,
+      "created_at": "2026-10-27T08:40:00",
+      "status": "Paid",
+      "paid_at": "2026-10-27T10:05:00",
+      "reference": "CASH-U-0004",
+      "card_type": "",
+      "recorded_by": "",
+      "note": ""
+    },
+    "assigned_staff_id": "U-0004",
+    "history": [
+      {
+        "status": "Requested",
+        "at": "2026-10-27T08:20:00",
+        "by": "U-0002",
+        "note": ""
+      },
+      {
+        "status": "Quoted",
+        "at": "2026-10-27T08:20:00",
+        "by": "U-0002",
+        "note": "Quoted $25.00"
+      },
+      {
+        "status": "Accepted",
+        "at": "2026-10-27T08:40:00",
+        "by": "U-0005",
+        "note": "Payment by Online card"
+      },
+      {
+        "status": "Allocated",
+        "at": "2026-10-27T09:00:00",
+        "by": "U-0002",
+        "note": "Allocated to Dev Driver"
+      },
+      {
+        "status": "Picked up",
+        "at": "2026-10-27T10:05:00",
+        "by": "U-0004",
+        "note": "Collected by Dev Driver"
+      },
+      {
+        "status": "Delivered",
+        "at": "2026-10-27T10:05:00",
+        "by": "U-0004",
+        "note": "Received by Mei Chen"
+      }
+    ],
+    "custody": [
+      {
+        "parcel": "P1",
+        "holder": "Dev Driver",
+        "at": "2026-10-27T10:05:00",
+        "event": "Picked up"
+      },
+      {
+        "parcel": "P1",
+        "holder": "Mei Chen",
+        "at": "2026-10-27T10:05:00",
+        "event": "Handed over"
+      }
+    ]
+  },
+  {
+    "request_id": "DR-0003",
+    "tracking_code": "DHQ2N47W",
+    "client_id": "U-0005",
+    "created_by_id": "U-0005",
+    "created_at": "2026-10-27T17:30:00",
+    "pickup": {
+      "street": "8 Glenferrie Rd",
+      "suburb": "Hawthorn",
+      "postcode": "3122",
+      "state": "VIC"
+    },
+    "dropoff": {
+      "street": "20 Clarendon St",
+      "suburb": "Southbank",
+      "postcode": "3006",
+      "state": "VIC"
+    },
+    "recipient": {
+      "name": "Mei Chen",
+      "phone": "0433222333"
+    },
+    "parcels": [
+      {
+        "label": "P1",
+        "description": "Books",
+        "size": "M",
+        "weight_kg": 4.0
+      }
+    ],
+    "service_level": "Standard",
+    "quote": {
+      "suggested_fee": 26.72,
+      "fee": 26.72,
+      "adjustment_reason": "",
+      "distance_km": 8.1,
+      "estimated_pickup": "2026-10-28T09:00:00",
+      "estimated_delivery": "2026-10-28T11:16:00",
+      "issued_at": "2026-10-27T17:30:00",
+      "issued_by_user_id": "U-0002"
+    },
+    "payment": {
+      "method": "Cash on delivery",
+      "payment_id": "PAY-DR-0003",
+      "amount": 26.72,
+      "created_at": "2026-10-27T17:30:00",
+      "status": "Paid",
+      "paid_at": "2026-10-27T17:30:00",
+      "reference": "MANUAL-U-0002",
+      "card_type": "",
+      "recorded_by": "U-0002",
+      "note": "Client paid cash at the office counter"
+    },
+    "assigned_staff_id": null,
+    "history": [
+      {
+        "status": "Requested",
+        "at": "2026-10-27T17:30:00",
+        "by": "U-0005",
+        "note": ""
+      },
+      {
+        "status": "Quoted",
+        "at": "2026-10-27T17:30:00",
+        "by": "U-0002",
+        "note": "Quoted $26.72"
+      },
+      {
+        "status": "Accepted",
+        "at": "2026-10-27T17:30:00",
+        "by": "U-0005",
+        "note": "Payment by Online card"
+      }
+    ],
+    "custody": []
+  }
+]

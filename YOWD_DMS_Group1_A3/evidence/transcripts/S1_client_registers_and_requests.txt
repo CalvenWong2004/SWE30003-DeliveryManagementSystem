@@ -1,0 +1,234 @@
+$ python -m yowd_dms --data evidence/demo_data --demo-time "2026-10-27 08:00" --seed-demo
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 08:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 2
+
+========================================================================
+ Register as a client   (type q to cancel)
+========================================================================
+  Full name: Sam Smith
+  Email [name@example.com]: sam@example
+  [!] Email must look like name@example.com.
+  Email [name@example.com]: sam@example.com
+  Phone [e.g. 0412 345 678]: 04123
+  [!] Phone must be an Australian number, e.g. 0412 345 678.
+  Phone [e.g. 0412 345 678]: 0498 765 432
+  Password [8+ characters]: *****
+  [!] Password must be at least 8 characters.
+  Password [8+ characters]: *********
+  [OK] Account U-0006 created. You can now log in.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 08:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: sam@example.com
+  Password: *********
+  [OK] Welcome, Sam Smith (Client).
+
+========================================================================
+ Client menu - Sam Smith
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 1
+
+========================================================================
+ Request a delivery   (type q at any prompt to cancel)
+========================================================================
+
+  Pickup address (Greater Melbourne only)
+  Street [e.g. 12 John St]: q
+  Request cancelled. Nothing was saved.
+
+========================================================================
+ Client menu - Sam Smith
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 1
+
+========================================================================
+ Request a delivery   (type q at any prompt to cancel)
+========================================================================
+
+  Pickup address (Greater Melbourne only)
+  Street [e.g. 12 John St]: 12 John St
+  Suburb [e.g. Hawthorn]: Hawthorn
+  Postcode [4 digits]: 312
+  [!] Postcode must be exactly 4 digits.
+  Postcode [4 digits]: 3122
+  [OK] Pickup: 12 John St, Hawthorn VIC 3122
+
+  Drop-off address (Greater Melbourne only)
+  Street [e.g. 12 John St]: 1 George St
+  Suburb [e.g. Hawthorn]: Sydney
+  Postcode [4 digits]: 2000
+  [!] Drop-off address: Sydney 2000 is outside the Greater Melbourne service area. Please re-enter.
+  Street [e.g. 12 John St]: 5 Station St
+  Suburb [e.g. Hawthorn]: Box Hill
+  Postcode [4 digits]: 3128
+  [OK] Drop-off: 5 Station St, Box Hill VIC 3128
+
+  Recipient
+  Recipient name: 
+  [!] Recipient name cannot be blank.
+  Recipient name: Ravi Patel
+  Recipient phone [e.g. 0412 345 678]: 123
+  [!] Phone must be an Australian number, e.g. 0412 345 678.
+  Recipient phone [e.g. 0412 345 678]: 0422 111 222
+
+  Parcels (all travel together with one driver)
+  P1 description [e.g. Documents]: Laptop
+   S) Small (fits a satchel)
+   M) Medium (shoebox)
+   L) Large (up to 60 cm)
+  P1 size: X
+  [!] Choose one of: S, M, L.
+  P1 size: M
+  P1 weight [kg, max 30]: 45
+  [!] Parcel weight must be more than 0 and at most 30 kg (the most one driver can carry).
+  P1 weight [kg, max 30]: 2.5
+  Add another parcel? [Y/N]: Y
+  P2 description [e.g. Documents]: Charger
+   S) Small (fits a satchel)
+   M) Medium (shoebox)
+   L) Large (up to 60 cm)
+  P2 size: S
+  P2 weight [kg, max 30]: 0.5
+  Add another parcel? [Y/N]: N
+   1) Standard (same day)
+   2) Express (priority, dearer)
+  Service level: 1
+
+========================================================================
+ Please check these details before submitting
+========================================================================
+  1. Pickup   : 12 John St, Hawthorn VIC 3122
+  2. Drop-off : 5 Station St, Box Hill VIC 3128
+  3. Recipient: Ravi Patel, 0422111222
+  4. Parcels  : P1 Laptop M 2.5 kg; P2 Charger S 0.5 kg
+  5. Service  : Standard
+   S) Submit request
+   E) Edit a section
+   C) Cancel without saving
+  Choose: E
+   1) Pickup
+   2) Drop-off
+   3) Recipient
+   4) Parcels
+   5) Service level
+  Section to change: 2
+
+  Drop-off address (Greater Melbourne only)
+  Street [e.g. 12 John St]: 8 Bridge Rd
+  Suburb [e.g. Hawthorn]: Richmond
+  Postcode [4 digits]: 3121
+  [OK] Drop-off: 8 Bridge Rd, Richmond VIC 3121
+
+========================================================================
+ Please check these details before submitting
+========================================================================
+  1. Pickup   : 12 John St, Hawthorn VIC 3122
+  2. Drop-off : 8 Bridge Rd, Richmond VIC 3121
+  3. Recipient: Ravi Patel, 0422111222
+  4. Parcels  : P1 Laptop M 2.5 kg; P2 Charger S 0.5 kg
+  5. Service  : Standard
+   S) Submit request
+   E) Edit a section
+   C) Cancel without saving
+  Choose: S
+  [OK] Request DR-0001 recorded with status Requested.
+  Recipient tracking code: EQX5X24E
+  Office staff will send a quote shortly.
+
+========================================================================
+ Client menu - Sam Smith
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 2
+
+========================================================================
+ My deliveries
+========================================================================
+  ID       Status     Client     From      To        Fee
+  -------  ---------  ---------  --------  --------  ---
+  DR-0001  Requested  Sam Smith  Hawthorn  Richmond  -  
+  Delivery ID to view [or Enter to go back] (Enter = none): DR-0001
+
+========================================================================
+ Delivery DR-0001  -  Requested
+========================================================================
+  Client       : Sam Smith
+  Pickup       : 12 John St, Hawthorn VIC 3122
+  Drop-off     : 8 Bridge Rd, Richmond VIC 3121
+  Recipient    : Ravi Patel (0422111222)
+  Service      : Standard
+  Tracking code: EQX5X24E
+  Parcels:
+    P1: Laptop, size M, 2.5 kg - held by Sender at Hawthorn
+    P2: Charger, size S, 0.5 kg - held by Sender at Hawthorn
+  Driver       : not allocated
+  History:
+    2026-10-27 08:00  Requested  by Sam Smith
+
+========================================================================
+ Client menu - Sam Smith
+========================================================================
+   1) Request a delivery
+   2) My deliveries
+   3) Respond to a quote
+   4) Pay for a delivery
+   5) Cancel a request
+   6) View an invoice
+   7) My details
+   T) Demo only: decline the next card payment
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 08:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 0
+  Goodbye.

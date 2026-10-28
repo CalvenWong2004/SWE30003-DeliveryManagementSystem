@@ -1,0 +1,385 @@
+$ python -m yowd_dms --data evidence/demo_data --demo-time "2026-10-27 17:00"
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: office@yowd.com.au
+  Password: ******
+  [!] Email or password is incorrect.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: office@yowd.com.au
+  Password: ******
+  [!] Email or password is incorrect.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: office@yowd.com.au
+  Password: ******
+  [!] Email or password is incorrect.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: office@yowd.com.au
+  Password: ******
+  [!] Email or password is incorrect.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: office@yowd.com.au
+  Password: ******
+  [!] 5 failed attempts: the account is locked for 15 minutes.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: office@yowd.com.au
+  Password: *********
+  [!] This account is locked after 5 failed attempts. Try again after 2026-10-27 17:15.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 1
+
+========================================================================
+ Log in
+========================================================================
+  Email: owner@yowd.com.au
+  Password: *********
+  [OK] Welcome, Olivia Owner (Business Owner).
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 6
+
+========================================================================
+ Delivery statistics
+========================================================================
+   1) Day
+   2) Week
+   3) Month
+   4) Year
+   5) Year to date
+  Period: 1
+  Reference date [YYYY-MM-DD] (Enter = 2026-10-27): 
+  ID      Driver       Account
+  ------  -----------  -------
+  U-0003  Dana Driver  Active 
+  U-0004  Dev Driver   Active 
+  Driver ID [or Enter for all] (Enter = all): 
+
+  Day 2026-10-27 to 2026-10-27, all staff
+  Measure              Value 
+  -------------------  ------
+  Delivered            2     
+  Declined             0     
+  Expired quotes       0     
+  Cancelled            0     
+  Revenue (delivered)  $50.04
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 6
+
+========================================================================
+ Delivery statistics
+========================================================================
+   1) Day
+   2) Week
+   3) Month
+   4) Year
+   5) Year to date
+  Period: 3
+  Reference date [YYYY-MM-DD] (Enter = 2026-10-27): 2026-13-01
+  [!] Date must be YYYY-MM-DD.
+  Reference date [YYYY-MM-DD] (Enter = 2026-10-27): 2026-10-27
+  ID      Driver       Account
+  ------  -----------  -------
+  U-0003  Dana Driver  Active 
+  U-0004  Dev Driver   Active 
+  Driver ID [or Enter for all] (Enter = all): U-0003
+
+  Month 2026-10-01 to 2026-10-31, Dana Driver
+  Measure              Value 
+  -------------------  ------
+  Delivered            1     
+  Revenue (delivered)  $25.04
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 6
+
+========================================================================
+ Delivery statistics
+========================================================================
+   1) Day
+   2) Week
+   3) Month
+   4) Year
+   5) Year to date
+  Period: 1
+  Reference date [YYYY-MM-DD] (Enter = 2026-10-27): 2026-10-28
+  ID      Driver       Account
+  ------  -----------  -------
+  U-0003  Dana Driver  Active 
+  U-0004  Dev Driver   Active 
+  Driver ID [or Enter for all] (Enter = all): 
+
+  Day 2026-10-28 to 2026-10-28, all staff
+  Measure              Value
+  -------------------  -----
+  Delivered            0    
+  Declined             0    
+  Expired quotes       0    
+  Cancelled            0    
+  Revenue (delivered)  $0.00
+  No deliveries were completed in this period.
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 8
+
+========================================================================
+ Manage staff
+========================================================================
+  ID      Name          Role            Email               Account
+  ------  ------------  --------------  ------------------  -------
+  U-0001  Olivia Owner  Business Owner  owner@yowd.com.au   Active 
+  U-0002  Oscar Office  Office Staff    office@yowd.com.au  Active 
+  U-0003  Dana Driver   Delivery Staff  dana@yowd.com.au    Active 
+  U-0004  Dev Driver    Delivery Staff  dev@yowd.com.au     Active 
+   A) Add a staff member
+   U) Update a staff member's details
+   D) Deactivate a leaver
+   B) Back
+  Action: A
+   1) Office Staff
+   2) Delivery Staff
+  Role: 2
+  Name: Priya Singh
+  Email: priya@yowd
+  [!] Email must look like name@example.com.
+  Email: priya@yowd.com.au
+  Phone [e.g. 0412 345 678]: 0411000003
+  Temporary password [8+ characters]: *********
+  [OK] Priya Singh added as Delivery Staff (U-0007).
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 8
+
+========================================================================
+ Manage staff
+========================================================================
+  ID      Name          Role            Email               Account
+  ------  ------------  --------------  ------------------  -------
+  U-0001  Olivia Owner  Business Owner  owner@yowd.com.au   Active 
+  U-0002  Oscar Office  Office Staff    office@yowd.com.au  Active 
+  U-0003  Dana Driver   Delivery Staff  dana@yowd.com.au    Active 
+  U-0004  Dev Driver    Delivery Staff  dev@yowd.com.au     Active 
+  U-0007  Priya Singh   Delivery Staff  priya@yowd.com.au   Active 
+   A) Add a staff member
+   U) Update a staff member's details
+   D) Deactivate a leaver
+   B) Back
+  Action: D
+  Staff ID: U-0004
+  Deactivate Dev Driver? [Y/N]: Y
+  [OK] Account deactivated; history kept for statistics.
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 8
+
+========================================================================
+ Manage staff
+========================================================================
+  ID      Name          Role            Email               Account    
+  ------  ------------  --------------  ------------------  -----------
+  U-0001  Olivia Owner  Business Owner  owner@yowd.com.au   Active     
+  U-0002  Oscar Office  Office Staff    office@yowd.com.au  Active     
+  U-0003  Dana Driver   Delivery Staff  dana@yowd.com.au    Active     
+  U-0004  Dev Driver    Delivery Staff  dev@yowd.com.au     Deactivated
+  U-0007  Priya Singh   Delivery Staff  priya@yowd.com.au   Active     
+   A) Add a staff member
+   U) Update a staff member's details
+   D) Deactivate a leaver
+   B) Back
+  Action: B
+
+========================================================================
+ Business Owner menu - Olivia Owner
+========================================================================
+   1) Log a request for a client
+   2) Prepare quotes
+   3) Allocate delivery staff
+   4) Manage staff availability
+   5) Find a delivery
+   6) Delivery statistics
+   7) Cancel a request
+   8) Manage staff (join / leave / update)
+   9) Client records (view / update / deactivate)
+   10) Payment records and invoices
+   11) My details
+   T) Demo only: advance the clock
+   0) Log out
+  Choose: 0
+  [OK] Logged out.
+
+========================================================================
+ Your Order We Deliver - Delivery Management System   [2026-10-27 17:00]
+========================================================================
+   1) Log in
+   2) Register as a new client
+   3) Track a parcel (recipients)
+   0) Exit
+  Choose: 0
+  Goodbye.

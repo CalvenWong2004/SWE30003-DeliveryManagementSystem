@@ -1,0 +1,93 @@
+classDiagram
+direction TB
+class DeliveryRequest {
+  +requestId: str
+  +trackingCode: str
+  +serviceLevel: ServiceLevel
+  +status: DeliveryStatus
+  +assignedStaffId: str
+  +issueQuote(quote)
+  +declineRequest(reason, at, by)
+  +acceptQuote(method, at, by) Payment
+  +declineQuote(at, by)
+  +expireIfLapsed(now) bool
+  +createPayment(method, at) Payment
+  +changePaymentMethod(method, at)
+  +allocate(staffId, at, by, name)
+  +releaseAllocation(at, by, reason)
+  +recordPickup(staffId, name, at)
+  +recordHandover(staffId, receivedBy, at)
+  +cancel(at, by, reason)
+  +currentHolder(parcelLabel) str
+  +attach(observer)
+}
+class Quote {
+  +suggestedFee: float
+  +fee: float
+  +adjustmentReason: str
+  +distanceKm: float
+  +estimatedPickup: datetime
+  +estimatedDelivery: datetime
+  +validUntil: datetime
+  +isValidAt(now) bool
+}
+namespace OwnedRecords {
+class Address {
+  <<data holder>>
+  street, suburb, postcode, state
+}
+class Parcel {
+  <<data holder>>
+  label, description, size, weightKg
+}
+class Recipient {
+  <<data holder>>
+  name, phone
+}
+class StatusChange {
+  <<data holder>>
+  status, at, byUserId, note
+}
+class CustodyRecord {
+  <<data holder>>
+  parcelLabel, holder, at, event
+}
+}
+namespace Payments {
+class Payment {
+  <<abstract>>
+  +amount: float
+  +status: PaymentStatus
+  +reference: str
+  +cancel(at)
+}
+class OnlinePayment {
+  +settle(gateway, at) str
+}
+class CashOnDelivery {
+  +recordCollection(amount, staffId, at)
+}
+class PaymentGateway {
+  <<interface>>
+  +charge(paymentId, amount) str
+}
+class SimulatedPaymentGateway
+}
+class DeliveryObserver {
+  <<interface>>
+  +onStatusChange(request, change)
+}
+class NotificationService
+Payment <|-- OnlinePayment
+Payment <|-- CashOnDelivery
+PaymentGateway <|.. SimulatedPaymentGateway
+OnlinePayment ..> PaymentGateway : charges via
+DeliveryObserver <|.. NotificationService
+DeliveryRequest "1" *-- "0..1" Quote
+DeliveryRequest "1" *-- "1..10" Parcel
+DeliveryRequest "1" *-- "2" Address
+DeliveryRequest "1" *-- "1" Recipient
+DeliveryRequest "1" *-- "1..*" StatusChange
+DeliveryRequest "1" *-- "*" CustodyRecord
+DeliveryRequest "1" o-- "*" DeliveryObserver : notifies
+DeliveryRequest "1" *-- "0..1" Payment
