@@ -7,6 +7,7 @@ the owner reuse ``edit_contact`` to update other people's records.
 from __future__ import annotations
 
 from ..app.dms import DeliveryManagementSystem
+from ..domain.common import PermissionDenied
 from ..domain.users import Client, User, validate_phone
 from .console_io import ConsoleIO, non_blank, password
 
@@ -31,13 +32,14 @@ def edit_contact(io: ConsoleIO, user: User) -> ContactChange | None:
     phone = io.ask("Phone", validate_phone, "e.g. 0412 345 678",
                    default=user.phone)
     address = None
+    address_changed = False
     if isinstance(user, Client):
         address = io.ask("Address", str,
                          "street, suburb, postcode, or - to clear",
                          default=user.default_address or "-")
         address = "" if address.strip() == "-" else address
-    changed = (name != user.name or phone != user.phone or
-               (address is not None and address != user.default_address))
+        address_changed = address != user.default_address
+    changed = name != user.name or phone != user.phone or address_changed
     if not changed:
         io.say("  Nothing changed.")
         return None
@@ -50,6 +52,8 @@ def edit_contact(io: ConsoleIO, user: User) -> ContactChange | None:
 def my_details(io: ConsoleIO, dms: DeliveryManagementSystem) -> None:
     """View and update the logged-in user's own details."""
     user = dms.current_user
+    if user is None:
+        raise PermissionDenied("Please log in first.")
     io.heading("My details")
     show_contact(io, user)
     action = io.choose("Action", {"D": "Update my contact details",

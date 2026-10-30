@@ -1,44 +1,79 @@
+---
+config:
+  layout: elk
+title: "YOWD DMS final class diagram (2 of 2): application structure, users and staff"
+---
 classDiagram
 direction TB
+note "Green = new in A3 · Amber = changed from A2 · Grey = as designed in A2"
+class ConsoleApp {
+  +run()
+}
+class ConsoleIO {
+  +ask(label, convert, hint, secret, default)
+  +choose(label, options) str
+  +confirm(question) bool
+  +table(headers, rows)
+}
+class RoleScreens {
+  <<ClientScreens / OfficeScreens / DriverScreens>>
+  +menu: dict
+  +handle(choice)
+}
+class AccountScreens {
+  <<module>>
+  +myDetails(io, dms)
+  +editContact(io, user) ContactChange
+}
 class DeliveryManagementSystem {
   <<Singleton / Facade>>
   -session: User
   +start(dataDir, clock, gateway)$
   +login(email, password) User
+  +updateMyDetails(name, phone, address)
+  +changeMyPassword(current, new)
+  +updateUserDetails(userId, name, phone, address)
+  +deactivateClient(userId)
+  +addStaff(role, name, email, phone, password)
+  +deactivateStaff(userId, allowNoCover) list
   +requestDelivery(...) DeliveryRequest
   +issueQuote(id, pickup, fee, reason) Quote
   +respondToQuote(id, accept, method)
   +payOnline(id) str
+  +invoice(id) Invoice
+  +paymentRecords(status) list
+  +recordPaymentManually(id, note)
   +allocate(id, staffId)
-  +addAvailability(staffId, start, end)
+  +removeAvailability(availabilityId, allowNoCover) list
   +recordPickup(id)
-  +collectCash(id, amount)
   +recordHandover(id, receivedBy)
-  +statistics(period, date, staffId)
-  +deactivateStaff(userId) list
+  +statistics(period, date, staffId) Statistics
 }
 class UserDirectory {
   +load() / save()
   +createUser(role, ...) User
   +authenticate(email, password) User
+  +updateDetails(user, name, phone, address)
+  +changePassword(user, current, new)
   +find(userId) User
 }
 class StaffRoster {
   +load() / save()
-  +setCommitmentSource(fn)
   +addAvailability(staffId, start, end)
   +conflictsIfRemoved(availabilityId) list
+  +gapsIfRemoved(availabilityId, now) list
+  +gapsIfStaffLeaves(staffId, now) list
   +isFree(staffId, start, end) bool
   +availableStaff(start, end) list
 }
 class DeliveryRegistry {
   +load() / save() / attachObservers()
+  +verifyIntegrity()
   +createRequest(...) DeliveryRequest
   +suggestQuote(request, pickup) QuoteSuggestion
   +expireLapsedQuotes() list
   +search(text) list
   +findByTracking(code) DeliveryRequest
-  +commitmentsFor(staffId) list
   +statistics(period, date, staffId) Statistics
 }
 class User {
@@ -47,10 +82,14 @@ class User {
   +state: AccountState
   +failedLogins, lockedUntil
   +verifyPassword(password) bool
+  +updateContact(name, phone)
   +can(operation) bool
   +permittedOperations()*
 }
-class Client
+class Client {
+  +defaultAddress: str
+  +updateAddress(address)
+}
 class OfficeStaff
 class BusinessOwner
 class DeliveryStaff
@@ -70,34 +109,69 @@ class ServiceArea {
   +check(address) AreaCheck
   +distanceKm(origin, destination) float
 }
+class NotificationService
+class PaymentGateway {
+  <<interface>>
+}
 class JsonStore {
+  <<with Data Mappers>>
   +load(collection) list
   +save(collection, records)
+  +userToDict() / requestToDict() ...
 }
 class Clock {
   +now() datetime
 }
+class IntegrityError
 class DeliveryRequest
+ConsoleApp *-- ConsoleIO
+ConsoleApp ..> RoleScreens : routes by role
+RoleScreens ..> AccountScreens : my details
+RoleScreens --> DeliveryManagementSystem : every use case
+DeliveryManagementSystem *-- UserDirectory
+DeliveryManagementSystem *-- StaffRoster
+DeliveryManagementSystem *-- DeliveryRegistry
+DeliveryManagementSystem *-- ServiceArea
+DeliveryManagementSystem *-- NotificationService
+DeliveryManagementSystem --> PaymentGateway
+DeliveryManagementSystem --> Clock
+UserDirectory "1" o-- "*" User
 User <|-- Client
 User <|-- OfficeStaff
 OfficeStaff <|-- BusinessOwner
 User <|-- DeliveryStaff
-PricingStrategy <|-- StandardPricing
-PricingStrategy <|-- ExpressPricing
-DeliveryManagementSystem *-- UserDirectory
-DeliveryManagementSystem *-- StaffRoster
-DeliveryManagementSystem *-- DeliveryRegistry
-DeliveryManagementSystem --> Clock
-UserDirectory "1" o-- "*" User
 StaffRoster "1" o-- "*" StaffAvailability
 StaffAvailability "*" --> "1" DeliveryStaff
 StaffRoster --> UserDirectory
 DeliveryRegistry "1" o-- "*" DeliveryRequest
-DeliveryRegistry --> ServiceArea
+DeliveryRegistry --> ServiceArea : validates addresses
 DeliveryRegistry --> "2" PricingStrategy
 DeliveryRegistry --> StaffRoster
+DeliveryRegistry --> UserDirectory
+DeliveryRegistry ..> IntegrityError : raises at startup
+PricingStrategy <|-- StandardPricing
+PricingStrategy <|-- ExpressPricing
 DeliveryRequest "*" --> "1" Client : for
 DeliveryRequest "*" --> "0..1" DeliveryStaff : allocated to
-UserDirectory ..> JsonStore
-StaffRoster ..> JsonStore
-DeliveryRegistry ..> JsonStore
+DeliveryManagementSystem *-- JsonStore : shared by the 3 registries
+style ConsoleApp fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style ConsoleIO fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style RoleScreens fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style AccountScreens fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style DeliveryManagementSystem fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style PricingStrategy fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style StandardPricing fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style ExpressPricing fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style PaymentGateway fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style JsonStore fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style Clock fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style IntegrityError fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style UserDirectory fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style StaffRoster fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style DeliveryRegistry fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style User fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style Client fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style BusinessOwner fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style ServiceArea fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style NotificationService fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style DeliveryRequest fill:#FEF3E0,stroke:#E37400,stroke-width:2px

@@ -140,8 +140,9 @@ class ClientScreens:
                     io.say("  Payment is still due. Use 'Pay for a "
                            "delivery' when ready.")
                     return
-        card = self.dms.view_delivery(request_id).payment.card_type
-        io.success(f"Payment processed (simulated) by {card}. Reference "
+        payment = self.dms.view_delivery(request_id).payment
+        card = f" by {payment.card_type}" if payment else ""
+        io.success(f"Payment processed (simulated){card}. Reference "
                    f"{reference}.")
 
     def invoice(self) -> None:

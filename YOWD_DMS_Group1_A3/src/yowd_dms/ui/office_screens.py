@@ -138,7 +138,11 @@ class OfficeScreens:
             io.say("  No accepted deliveries are waiting for a driver.")
             return
         request = self.dms.view_delivery(io.ask("Delivery ID"))
-        start, end = request.committed_period()
+        period = request.committed_period()
+        if period is None:
+            io.error(f"{request.request_id} has no quoted window yet.")
+            return
+        start, end = period
         io.say(f"  Window: {format_datetime(start)} to "
                f"{format_datetime(end)}")
         free = self.dms.available_staff_for(request.request_id)
@@ -348,19 +352,18 @@ class OfficeScreens:
         filters = {"1": "All", "2": "Due", "3": "Paid", "4": "Cancelled"}
         choice = io.choose("Show", filters)
         status = None if choice == "1" else PaymentStatus(filters[choice])
-        records = self.dms.payment_records(status)
+        records = [(r, r.payment) for r in self.dms.payment_records(status)
+                   if r.payment is not None]
         io.table(["Delivery", "Client", "Method", "Amount", "Status",
                   "Reference", "Paid at"],
                  [[r.request_id, self.dms.client_name(r.client_id),
-                   r.payment.method.value
-                   + (f" ({r.payment.card_type})"
-                      if r.payment.card_type else ""),
-                   f"${r.payment.amount:.2f}", r.payment.status.value,
-                   r.payment.reference or "-",
-                   format_datetime(r.payment.paid_at)
-                   if r.payment.paid_at else "-"] for r in records])
-        paid = sum(r.payment.amount for r in records
-                   if r.payment.status is PaymentStatus.PAID)
+                   p.method.value
+                   + (f" ({p.card_type})" if p.card_type else ""),
+                   f"${p.amount:.2f}", p.status.value, p.reference or "-",
+                   format_datetime(p.paid_at) if p.paid_at else "-"]
+                  for r, p in records])
+        paid = sum(p.amount for _, p in records
+                   if p.status is PaymentStatus.PAID)
         io.say(f"  {len(records)} payment(s); ${paid:.2f} received.")
         if not records:
             return

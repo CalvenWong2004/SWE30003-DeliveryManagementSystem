@@ -25,7 +25,13 @@ def _dt(value: datetime | None) -> str | None:
 
 
 def _parse(value: str | None) -> datetime | None:
+    """Parse an optional timestamp (e.g. paid_at, locked_until)."""
     return datetime.fromisoformat(value) if value else None
+
+
+def _parse_required(value: str) -> datetime:
+    """Parse a timestamp the record must always have."""
+    return datetime.fromisoformat(value)
 
 
 # -- users ---------------------------------------------------------------
@@ -69,7 +75,8 @@ def availability_to_dict(item: StaffAvailability) -> dict[str, Any]:
 def availability_from_dict(record: dict[str, Any]) -> StaffAvailability:
     """Rebuild an availability period."""
     return StaffAvailability(record["availability_id"], record["staff_id"],
-                             _parse(record["start"]), _parse(record["end"]))
+                             _parse_required(record["start"]),
+                             _parse_required(record["end"]))
 
 
 # -- delivery requests ---------------------------------------------------
@@ -94,7 +101,7 @@ def _payment_from_dict(record: dict[str, Any] | None) -> Payment | None:
     cls = (OnlinePayment if PaymentMethod(record["method"])
            is PaymentMethod.ONLINE else CashOnDelivery)
     payment = cls(record["payment_id"], record["amount"],
-                  _parse(record["created_at"]))
+                  _parse_required(record["created_at"]))
     payment.status = PaymentStatus(record["status"])
     payment.paid_at = _parse(record["paid_at"])
     payment.reference = record["reference"]
@@ -122,9 +129,10 @@ def _quote_from_dict(record: dict[str, Any] | None) -> Quote | None:
         return None
     return Quote(record["suggested_fee"], record["fee"],
                  record["adjustment_reason"], record["distance_km"],
-                 _parse(record["estimated_pickup"]),
-                 _parse(record["estimated_delivery"]),
-                 _parse(record["issued_at"]), record["issued_by_user_id"])
+                 _parse_required(record["estimated_pickup"]),
+                 _parse_required(record["estimated_delivery"]),
+                 _parse_required(record["issued_at"]),
+                 record["issued_by_user_id"])
 
 
 def request_to_dict(request: DeliveryRequest) -> dict[str, Any]:
@@ -165,14 +173,15 @@ def request_from_dict(record: dict[str, Any]) -> DeliveryRequest:
         _address(record["dropoff"]),
         Recipient(record["recipient"]["name"], record["recipient"]["phone"]),
         parcels, ServiceLevel(record["service_level"]),
-        _parse(record["created_at"]))
+        _parse_required(record["created_at"]))
     request.quote = _quote_from_dict(record["quote"])
     request.payment = _payment_from_dict(record["payment"])
     request.assigned_staff_id = record["assigned_staff_id"]
     request.history = [StatusChange(DeliveryStatus(h["status"]),
-                                    _parse(h["at"]), h["by"], h["note"])
+                                    _parse_required(h["at"]), h["by"],
+                                    h["note"])
                        for h in record["history"]]
     request.custody = [CustodyRecord(c["parcel"], c["holder"],
-                                     _parse(c["at"]), c["event"])
+                                     _parse_required(c["at"]), c["event"])
                        for c in record["custody"]]
     return request

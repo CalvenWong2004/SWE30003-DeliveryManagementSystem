@@ -160,7 +160,11 @@ class OnlinePayment(Payment):
     """Card payment settled through the PaymentGateway adapter."""
 
     method = PaymentMethod.ONLINE
-    collected_by_driver = False
+
+    @property
+    def collected_by_driver(self) -> bool:
+        """An online payment is settled before pickup, not by the driver."""
+        return False
 
     def settle(self, gateway: PaymentGateway, at: datetime) -> str:
         """Charge through ``gateway``; status stays Due if declined."""
@@ -176,7 +180,11 @@ class CashOnDelivery(Payment):
     """Cash collected in person by the allocated driver at drop-off."""
 
     method = PaymentMethod.CASH_ON_DELIVERY
-    collected_by_driver = True
+
+    @property
+    def collected_by_driver(self) -> bool:
+        """The allocated driver collects cash at drop-off."""
+        return True
 
     def record_collection(self, amount: float, staff_id: str,
                           at: datetime) -> None:

@@ -1,25 +1,33 @@
+---
+title: "YOWD DMS final class diagram (1 of 2): delivery and payment domain"
+---
 classDiagram
 direction TB
+note "Green = new in A3 · Amber = changed from A2 · Grey = as designed in A2"
 class DeliveryRequest {
   +requestId: str
   +trackingCode: str
+  +clientId: str
+  +createdById: str
   +serviceLevel: ServiceLevel
-  +status: DeliveryStatus
   +assignedStaffId: str
+  +status: DeliveryStatus
+  +attach(observer)
   +issueQuote(quote)
   +declineRequest(reason, at, by)
-  +acceptQuote(method, at, by) Payment
+  +acceptQuote(method, at, by)
   +declineQuote(at, by)
   +expireIfLapsed(now) bool
   +createPayment(method, at) Payment
-  +changePaymentMethod(method, at)
+  +changePaymentMethod(method, at) Payment
+  +invoice(billTo, at) Invoice
   +allocate(staffId, at, by, name)
   +releaseAllocation(at, by, reason)
   +recordPickup(staffId, name, at)
   +recordHandover(staffId, receivedBy, at)
   +cancel(at, by, reason)
   +currentHolder(parcelLabel) str
-  +attach(observer)
+  +committedPeriod() Period
 }
 class Quote {
   +suggestedFee: float
@@ -28,10 +36,11 @@ class Quote {
   +distanceKm: float
   +estimatedPickup: datetime
   +estimatedDelivery: datetime
+  +issuedAt: datetime
+  +issuedByUserId: str
   +validUntil: datetime
   +isValidAt(now) bool
 }
-namespace OwnedRecords {
 class Address {
   <<data holder>>
   street, suburb, postcode, state
@@ -52,13 +61,20 @@ class CustodyRecord {
   <<data holder>>
   parcelLabel, holder, at, event
 }
-}
-namespace Payments {
 class Payment {
   <<abstract>>
+  +paymentId: str
   +amount: float
   +status: PaymentStatus
+  +paidAt: datetime
   +reference: str
+  +cardType: str
+  +recordedBy: str
+  +note: str
+  +invoiceNumber() str
+  +collectedByDriver()* bool
+  +recordManual(at, by, note)
+  +issueInvoice(requestId, billTo, lines, at) Invoice
   +cancel(at)
 }
 class OnlinePayment {
@@ -69,25 +85,55 @@ class CashOnDelivery {
 }
 class PaymentGateway {
   <<interface>>
-  +charge(paymentId, amount) str
+  +charge(paymentId, amount) ChargeResult
 }
-class SimulatedPaymentGateway
+class SimulatedPaymentGateway {
+  +declineNext: bool
+  +charge(paymentId, amount) ChargeResult
+}
+class ChargeResult {
+  <<data holder>>
+  reference, cardType
+}
+class Invoice {
+  <<data holder>>
+  invoiceNumber, issuedAt, requestId, billTo
+  lines, total, method, status
+  reference, cardType, paidAt
 }
 class DeliveryObserver {
   <<interface>>
   +onStatusChange(request, change)
 }
-class NotificationService
-Payment <|-- OnlinePayment
-Payment <|-- CashOnDelivery
-PaymentGateway <|.. SimulatedPaymentGateway
-OnlinePayment ..> PaymentGateway : charges via
-DeliveryObserver <|.. NotificationService
+class NotificationService {
+  +onStatusChange(request, change)
+  +notifyNewRequest(request)
+}
 DeliveryRequest "1" *-- "0..1" Quote
+DeliveryRequest "1" *-- "2" Address : pickup, drop-off
 DeliveryRequest "1" *-- "1..10" Parcel
-DeliveryRequest "1" *-- "2" Address
 DeliveryRequest "1" *-- "1" Recipient
 DeliveryRequest "1" *-- "1..*" StatusChange
 DeliveryRequest "1" *-- "*" CustodyRecord
-DeliveryRequest "1" o-- "*" DeliveryObserver : notifies
 DeliveryRequest "1" *-- "0..1" Payment
+DeliveryRequest "1" o-- "*" DeliveryObserver : notifies
+DeliveryRequest ..> Invoice : builds lines for
+Payment <|-- OnlinePayment
+Payment <|-- CashOnDelivery
+Payment ..> Invoice : issues
+PaymentGateway <|.. SimulatedPaymentGateway
+OnlinePayment ..> PaymentGateway : charges via
+PaymentGateway ..> ChargeResult : returns
+DeliveryObserver <|.. NotificationService
+style CustodyRecord fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style ChargeResult fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style Invoice fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style PaymentGateway fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style SimulatedPaymentGateway fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style DeliveryObserver fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style DeliveryRequest fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style Quote fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style Recipient fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style Payment fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style OnlinePayment fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style NotificationService fill:#FEF3E0,stroke:#E37400,stroke-width:2px

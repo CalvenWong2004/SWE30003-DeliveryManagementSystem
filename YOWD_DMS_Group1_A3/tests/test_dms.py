@@ -24,6 +24,9 @@ from yowd_dms.domain.delivery import (Address, DeliveryStatus,  # noqa: E402
 from yowd_dms.domain.payment import (SIMULATED_CARD_TYPES,  # noqa: E402
                                      PaymentDeclined, PaymentMethod,
                                      PaymentStatus, SimulatedPaymentGateway)
+from yowd_dms.domain.delivery import Quote  # noqa: E402
+from yowd_dms.domain.payment import Payment  # noqa: E402
+from yowd_dms.domain.users import Client, User  # noqa: E402
 from yowd_dms.registry.delivery_registry import Period  # noqa: E402
 
 START = datetime(2026, 10, 27, 8, 0)
@@ -54,6 +57,22 @@ class DmsTestCase(unittest.TestCase):
         self.dms.logout()
         self.dms.login(f"{who}@" + ("example.com" if who == "chloe"
                                     else "yowd.com.au"), DEMO_PASSWORD)
+
+    # -- checked accessors: fail clearly instead of returning None ----------
+    def me(self) -> User:
+        user = self.dms.current_user
+        assert user is not None, "nobody is logged in"
+        return user
+
+    def payment(self, request_id: str) -> Payment:
+        payment = self.dms.view_delivery(request_id).payment
+        assert payment is not None, f"{request_id} has no payment"
+        return payment
+
+    def quote(self, request_id: str) -> Quote:
+        quote = self.dms.view_delivery(request_id).quote
+        assert quote is not None, f"{request_id} has no quote"
+        return quote
 
     def new_request(self, kg: float = 2.0) -> str:
         self.login("chloe")
@@ -191,10 +210,10 @@ class PaymentTests(DmsTestCase):
 
     def test_payment_amount_equals_quote_and_online_settles(self) -> None:
         request_id = self.accepted_request(PaymentMethod.ONLINE)
-        request = self.dms.view_delivery(request_id)
-        self.assertEqual(request.payment.amount, request.quote.fee)
+        self.assertEqual(self.payment(request_id).amount,
+                         self.quote(request_id).fee)
         self.dms.pay_online(request_id)
-        self.assertEqual(request.payment.status, PaymentStatus.PAID)
+        self.assertEqual(self.payment(request_id).status, PaymentStatus.PAID)
 
     def test_declined_card_can_switch_to_cash(self) -> None:
         request_id = self.accepted_request(PaymentMethod.ONLINE)
@@ -203,9 +222,8 @@ class PaymentTests(DmsTestCase):
             self.dms.pay_online(request_id)
         self.dms.change_payment_method(request_id,
                                        PaymentMethod.CASH_ON_DELIVERY)
-        request = self.dms.view_delivery(request_id)
-        self.assertTrue(request.payment.collected_by_driver)
-        self.assertEqual(request.payment.status, PaymentStatus.DUE)
+        self.assertTrue(self.payment(request_id).collected_by_driver)
+        self.assertEqual(self.payment(request_id).status, PaymentStatus.DUE)
 
 
 class AllocationTests(DmsTestCase):
@@ -257,7 +275,7 @@ class DeliveryTests(DmsTestCase):
             self.dms.record_handover(request_id, "Ravi Recipient")
         with self.assertRaises(StateError):
             self.dms.collect_cash(request_id, 1.00)
-        self.dms.collect_cash(request_id, request.quote.fee)
+        self.dms.collect_cash(request_id, self.quote(request_id).fee)
         self.dms.record_handover(request_id, "Ravi Recipient")
         self.assertEqual(request.status, DeliveryStatus.DELIVERED)
         self.assertEqual(request.current_holder("P1"), "Ravi Recipient")
@@ -305,7 +323,7 @@ class StatisticsTests(DmsTestCase):
         request_id = self.allocated_request("U-0003")
         self.login("dana")
         self.dms.record_pickup(request_id)
-        fee = self.dms.view_delivery(request_id).quote.fee
+        fee = self.quote(request_id).fee
         self.dms.collect_cash(request_id, fee)
         self.dms.record_handover(request_id, "Ravi")
 
@@ -348,12 +366,13 @@ class UserMaintenanceTests(DmsTestCase):
         self.login("chloe")
         with self.assertRaises(ValidationError):
             self.dms.update_my_details(phone="12345")
-        self.assertEqual(self.dms.current_user.phone, "0412345678")
+        self.assertEqual(self.me().phone, "0412345678")
         self.dms.update_my_details("Chloe Chen", "0499 888 777",
                                    "1 Main St, Kew VIC 3101")
         self.dms = self._start()
         self.login("chloe")
-        user = self.dms.current_user
+        user = self.me()
+        assert isinstance(user, Client)
         self.assertEqual((user.name, user.phone, user.default_address),
                          ("Chloe Chen", "0499888777",
                           "1 Main St, Kew VIC 3101"))
@@ -410,8 +429,8 @@ class PaymentRecordTests(DmsTestCase):
                                invoice.total)
         self.dms = self._start()
         self.login("chloe")
-        restored = self.dms.view_delivery(request_id).payment
-        self.assertEqual(restored.card_type, invoice.card_type)
+        self.assertEqual(self.payment(request_id).card_type,
+                         invoice.card_type)
 
     def test_invoice_shows_fee_adjustment(self) -> None:
         request_id = self.new_request()
@@ -439,7 +458,7 @@ class PaymentRecordTests(DmsTestCase):
         with self.assertRaises(ValidationError):
             self.dms.record_payment_manually(request_id, " ")
         self.dms.record_payment_manually(request_id, "Paid at the office")
-        payment = self.dms.view_delivery(request_id).payment
+        payment = self.payment(request_id)
         self.assertEqual(payment.status, PaymentStatus.PAID)
         self.assertEqual(payment.reference, "MANUAL-U-0002")
         self.assertEqual(self.dms.payment_records(PaymentStatus.DUE), [])
@@ -451,10 +470,10 @@ class PaymentRecordTests(DmsTestCase):
         self.dms.simulate_card_decline()
         with self.assertRaises(PaymentDeclined):
             self.dms.pay_online(request_id)
-        self.assertEqual(self.dms.view_delivery(request_id).payment.status,
+        self.assertEqual(self.payment(request_id).status,
                          PaymentStatus.DUE)
         self.dms.pay_online(request_id)
-        self.assertEqual(self.dms.view_delivery(request_id).payment.status,
+        self.assertEqual(self.payment(request_id).status,
                          PaymentStatus.PAID)
 
 

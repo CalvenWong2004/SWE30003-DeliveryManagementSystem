@@ -15,6 +15,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from typing import Callable
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "evidence" / "demo_data"
@@ -32,7 +33,10 @@ def tracking_code(request_id: str) -> str:
                 if r["request_id"] == request_id)
 
 
-def scenarios() -> list[tuple[str, str, list[str] | callable, bool]]:
+Inputs = list[str] | Callable[[], list[str]]
+
+
+def scenarios() -> list[tuple[str, str, Inputs, bool]]:
     s1 = [
         "2", "Sam Smith", "sam@example", "sam@example.com", "04123",
         "0498 765 432", "short", PW,
@@ -164,9 +168,8 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     env = dict(os.environ, PYTHONPATH=str(ROOT / "src"),
                PYTHONIOENCODING="utf-8")
-    for name, when, inputs, seed in scenarios():
-        if callable(inputs):
-            inputs = inputs()
+    for name, when, script, seed in scenarios():
+        inputs = script() if callable(script) else script
         args = [sys.executable, "-m", "yowd_dms", "--data", str(DATA),
                 "--demo-time", when] + (["--seed-demo"] if seed else [])
         result = subprocess.run(args, input="\n".join(inputs) + "\n",

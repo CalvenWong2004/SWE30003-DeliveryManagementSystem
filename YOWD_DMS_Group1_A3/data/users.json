@@ -10,5 +10,30 @@
     "state": "Active",
     "failed_logins": 0,
     "locked_until": null
+  },
+  {
+    "user_id": "U-0002",
+    "role": "Client",
+    "name": "Calven",
+    "email": "casoco@dd.com",
+    "phone": "0421913816",
+    "salt": "c69bb63e8b78d82c8cc6686cafa0f228",
+    "hash": "52cb711c096fd1920038d7a7fb20014782ea3152834effd5a91cbf000a7f41ef",
+    "state": "Active",
+    "failed_logins": 0,
+    "locked_until": null,
+    "default_address": ""
+  },
+  {
+    "user_id": "U-0003",
+    "role": "Delivery Staff",
+    "name": "Blue",
+    "email": "blueeeee@gmail.com",
+    "phone": "0433789456",
+    "salt": "b9b84c310cade47981039198b5a4b2ce",
+    "hash": "4b4c531d9b28dc6b7bf3999635bac73bd59dc74316f39b9661168861b71c0b10",
+    "state": "Active",
+    "failed_logins": 0,
+    "locked_until": null
   }
 ]

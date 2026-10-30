@@ -1,0 +1,123 @@
+---
+title: "YOWD DMS final UML class diagram (A2 Figure 1, updated for A3)"
+config:
+  theme: neutral
+  layout: elk
+---
+classDiagram
+direction TB
+note "Green = new in A3 · Amber = changed from A2 · Grey = as in A2"
+class DeliveryManagementSystem {
+  <<Singleton / Facade>>
+}
+class UserDirectory
+class User {
+  <<abstract>>
+}
+class BusinessOwner
+class Client
+class OfficeStaff
+class DeliveryStaff
+class NotificationService
+class DeliveryObserver {
+  <<interface>>
+}
+class DeliveryRegistry
+class StaffRoster
+class StaffAvailability
+class ServiceArea
+class PricingStrategy {
+  <<abstract>>
+}
+class StandardPricing
+class ExpressPricing
+class DeliveryRequest
+class Quote
+class Address {
+  <<data holder>>
+}
+class Parcel {
+  <<data holder>>
+}
+class Recipient {
+  <<data holder>>
+}
+class StatusChange {
+  <<data holder>>
+}
+class CustodyRecord {
+  <<data holder>>
+}
+class Payment {
+  <<abstract>>
+}
+class CashOnDelivery
+class OnlinePayment
+class PaymentGateway {
+  <<interface>>
+}
+class SimulatedPaymentGateway
+class ChargeResult {
+  <<data holder>>
+}
+class Invoice {
+  <<data holder>>
+}
+DeliveryManagementSystem "1" *-- "1" UserDirectory
+DeliveryManagementSystem "1" *-- "1" StaffRoster
+DeliveryManagementSystem "1" *-- "1" DeliveryRegistry
+DeliveryManagementSystem --> PaymentGateway : uses
+UserDirectory "1" *-- "*" User : manages
+User <|-- Client
+User <|-- OfficeStaff
+User <|-- DeliveryStaff
+OfficeStaff <|-- BusinessOwner
+DeliveryRequest "*" --> "1" Client : logged for
+DeliveryRequest "*" --> "0..1" OfficeStaff : quoted by
+DeliveryRequest "*" --> "0..1" DeliveryStaff : assigned to
+DeliveryRequest "1" *-- "1" Recipient : received by
+DeliveryRequest "1" *-- "2" Address : pickup, drop-off
+DeliveryRequest "1" *-- "1..10" Parcel : contains
+DeliveryRequest "1" *-- "1..*" StatusChange : history
+DeliveryRequest "1" *-- "*" CustodyRecord : custody
+DeliveryRequest "1" *-- "0..1" Quote : contains
+DeliveryRequest "1" *-- "0..1" Payment : processed via
+DeliveryRequest "1" o-- "*" DeliveryObserver : notifies
+DeliveryObserver <|.. NotificationService
+NotificationService ..> Client : emails
+NotificationService ..> Recipient : sends SMS
+DeliveryRegistry "1" o-- "*" DeliveryRequest : stores
+DeliveryRegistry "*" --> "1" ServiceArea : validates addresses
+DeliveryRegistry --> "2" PricingStrategy : prices with
+PricingStrategy <|-- StandardPricing
+PricingStrategy <|-- ExpressPricing
+StaffRoster "1" o-- "*" StaffAvailability : contains
+StaffRoster "1" --> "*" DeliveryStaff : schedules
+StaffAvailability "*" --> "1" DeliveryStaff : belongs to
+Payment <|-- CashOnDelivery
+Payment <|-- OnlinePayment
+Payment ..> Invoice : issues
+OnlinePayment ..> PaymentGateway : charges via
+PaymentGateway <|.. SimulatedPaymentGateway
+PaymentGateway ..> ChargeResult : returns
+style DeliveryManagementSystem fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style DeliveryObserver fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style PricingStrategy fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style StandardPricing fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style ExpressPricing fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style CustodyRecord fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style PaymentGateway fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style SimulatedPaymentGateway fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style ChargeResult fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style Invoice fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px
+style BusinessOwner fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style Recipient fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style Quote fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style NotificationService fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style ServiceArea fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style DeliveryRequest fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style Payment fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style OnlinePayment fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style UserDirectory fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style StaffRoster fill:#FEF3E0,stroke:#E37400,stroke-width:2px
+style DeliveryRegistry fill:#FEF3E0,stroke:#E37400,stroke-width:2px
